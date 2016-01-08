@@ -19,8 +19,7 @@ class Adminlogin extends CI_Controller {
          else{                                       //   Si ambos campos fueron correctamente rellanados por el usuario,
             $this->load->model('users_m');
             $result = $this->users_m->make_login();
-var_dump($result);
-           if(isset($result['make_login_result']) && isset($result['make_login_result']['status']) && $result['make_login_result']['status'] == 'success') redirect('mc/summary', 'refresh');
+           if(isset($result['make_login_result']) && isset($result['make_login_result']['status']) && $result['make_login_result']['status'] == 'success') redirect('mc/resumen', 'refresh');
             $this->load->view('login', $result);
 
          }

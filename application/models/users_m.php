@@ -4,7 +4,7 @@ class Users_m extends CI_Model{
 
 	public function login()
 	{
-		session_start();
+	//	session_start();
 		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == "yes" && isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['name']) && isset($_SESSION['user_full_name'])) return true;
 		else return false;
 	}
@@ -95,7 +95,7 @@ class Users_m extends CI_Model{
 
 		if(empty($flag_failed))
 		{	
-			session_start();
+		//	session_start();
 			$_SESSION['logged_in'] = "yes";
 			$_SESSION['user_id'] = $user_id;
 			$_SESSION['username'] = $username;

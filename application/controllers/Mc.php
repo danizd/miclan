@@ -35,19 +35,16 @@ class Mc extends CI_Controller {
 		echo json_encode(array("items" => $result));
 	}
 
-	public function summary()
+	public function resumen()
 	{
 
 		
 		$this->load->helper('url');
 		$this->load->model('users_m');
 
-		if($this->users_m->login() == false) redirect('login', 'refresh');
-
-
 		$this->load->view('header');
-		$this->load->view('mc/summary/summary_main');
-		$this->load->view('footer', array("script" => "mc/summary/javascript"));
+		$this->load->view('mc/resumen/resumen_main');
+		$this->load->view('footer', array("script" => "mc/resumen/javascript"));
 	}
 
 

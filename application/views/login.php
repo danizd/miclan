@@ -9,11 +9,11 @@
         <meta name="viewport" content="width=device-width">
         <!--<link rel="shortcut icon" href="/favicon.ico">-->
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-         <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
-         <link rel="stylesheet" href="<?php echo base_url("assets/css/styles.css"); ?>" />
+         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css" />
+         <link rel="stylesheet" href="/assets/css/styles.css" />
 
-         <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min"); ?>"></script>
-         <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
+         <script type="text/javascript" src="/assets/bootstrap/jquery-1.11.3.min"</script>
+         <script type="text/javascript" src="/assets/bootstrap/assets/js/bootstrap.js"></script>
         <!--[if lt IE 9]>
         <script src="/admin/assets/libs/html5shiv/html5shiv.min.js"></script>
         <script src="/admin/assets/libs/respond/respond.min.js"></script>
