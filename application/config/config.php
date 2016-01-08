@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$config['salt']	= '$5$rounds=5000$p1o1h3b4g6s4fgfd5j7fb7n6$';
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://miclan.dev:8080/';
 
 /*
 |--------------------------------------------------------------------------
