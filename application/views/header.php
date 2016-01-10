@@ -52,7 +52,8 @@ switch($this->router->class)
     <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -92,7 +93,7 @@ switch($this->router->class)
                       <li><!-- start message -->
                         <a href="#">
                           <div class="pull-left">
-                            <img src="/assets/images/dani-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                           </div>
                           <h4>
                             Support Team
@@ -104,7 +105,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                           </div>
                           <h4>
                             AdminLTE Design Team
@@ -116,7 +117,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                           </div>
                           <h4>
                             Developers
@@ -128,7 +129,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                           </div>
                           <h4>
                             Sales Department
@@ -140,7 +141,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                           </div>
                           <h4>
                             Reviewers
@@ -268,13 +269,13 @@ switch($this->router->class)
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/assets/images/dani-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="/assets/images/usuarios/dani-160x160.jpg" class="user-image" alt="User Image">
                   <span class="hidden-xs">Alexander Pierce</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="/assets/images/dani-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       Alexander Pierce - Web Developer
                       <small>Member since Nov. 2012</small>
@@ -318,7 +319,7 @@ switch($this->router->class)
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="/assets/images/dani-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p>Alexander Pierce</p>
@@ -344,14 +345,14 @@ switch($this->router->class)
               </a>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="noticias">
                 <i class="fa fa-files-o"></i>
                 <span>Noticias</span>
                 <span class="label label-primary pull-right">4</span>
               </a>
             </li>
             <li>
-              <a href="pages/widgets.html">
+              <a href="citas">
                 <i class="fa fa-th"></i> 
                 <span>Citas</span> 
               </a>
@@ -365,11 +366,11 @@ switch($this->router->class)
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Cuestiones médicas<i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Alergia</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Dudas pediátricas <i class="fa fa-angle-left pull-right"></i></a></li>
+                    <li><a href="alergia"><i class="fa fa-circle-o"></i> Alergia</a></li>
+                    <li><a href="dudas"><i class="fa fa-circle-o"></i> Dudas pediátricas <i class="fa fa-angle-left pull-right"></i></a></li>
                   </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Actividades<i class="fa fa-angle-left pull-right"></i></a></li>
+                <li><a href="actividades"><i class="fa fa-circle-o"></i>Actividades<i class="fa fa-angle-left pull-right"></i></a></li>
               </ul>
             </li>
             <li class="header">Etiquetas</li>

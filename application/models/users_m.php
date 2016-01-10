@@ -70,7 +70,7 @@ class Users_m extends CI_Model{
 				}
 				else
 				{
-					$user_id = (string)$check_user_credentials_result['0']['admin_users_id'];
+					$user_id = (string)$check_user_credentials_result['0']['idUsuario'];
 					$username = $check_user_credentials_result['0']['username'];
 					$name = $check_user_credentials_result['0']['name'];
 					$user_full_name = (empty($check_user_credentials_result['0']['lastname'])) ? $check_user_credentials_result['0']['name'] : $check_user_credentials_result['0']['name'] . " " . $check_user_credentials_result['0']['lastname'];

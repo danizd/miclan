@@ -2,3 +2,6 @@
     width: 600px;
     margin: 100px auto;
 }
+#error-titulo{color:red;}
+#error-enlace{color:red;}
+#correcto{text-align: center;font-size: x-large;color: #00a65a;}
