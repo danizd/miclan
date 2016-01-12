@@ -52,6 +52,9 @@ switch($this->router->class)
     <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- fullCalendar 2.2.5-->
+    <link rel="stylesheet" href="/assets/plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fullcalendar/fullcalendar.print.css" media="print">
     <!-- Estilos propios -->
     <link rel="stylesheet" href="/assets/css/styles.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -277,8 +280,8 @@ switch($this->router->class)
                   <li class="user-header">
                     <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      Daniel Zas - Desarrollador Web 
+                      <small>Member since Nov. 2015</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -340,8 +343,8 @@ switch($this->router->class)
           <ul class="sidebar-menu">
             <li class="header">NAVEGACIÓN</li>
             <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Resumen</span> <i class="fa fa-angle-left pull-right"></i>
+              <a href="resumen">
+                <i class="fa fa-dashboard"></i> <span>Portada</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
             <li class="treeview">
@@ -352,9 +355,21 @@ switch($this->router->class)
               </a>
             </li>
             <li>
+              <a href="pendientes">
+                <i class="fa fa-envelope"></i> 
+                <span>Temas pendientes</span> 
+              </a>
+            </li>
+            <li>
               <a href="citas">
                 <i class="fa fa-th"></i> 
                 <span>Citas</span> 
+              </a>
+            </li>
+            <li>
+              <a href="horarios">
+                <i class="fa fa-calendar"></i> 
+                <span>Horarios Elena</span> 
               </a>
             </li>
             <li class="treeview">
@@ -366,12 +381,18 @@ switch($this->router->class)
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Cuestiones médicas<i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="alergia"><i class="fa fa-circle-o"></i> Alergia</a></li>
+                    <li><a href="alergias"><i class="fa fa-circle-o"></i> Alergia</a></li>
                     <li><a href="dudas"><i class="fa fa-circle-o"></i> Dudas pediátricas <i class="fa fa-angle-left pull-right"></i></a></li>
                   </ul>
                 </li>
                 <li><a href="actividades"><i class="fa fa-circle-o"></i>Actividades<i class="fa fa-angle-left pull-right"></i></a></li>
               </ul>
+            </li>
+            <li>
+              <a href="quever">
+                <i class="fa fa-tv"></i> 
+                <span>Que ver</span> 
+              </a>
             </li>
             <li class="header">Etiquetas</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Importante</span></a></li>
