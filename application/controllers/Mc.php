@@ -37,14 +37,14 @@ class Mc extends CI_Controller {
 	public function resumen()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminuser/login_page', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
 		$this->load->view('mc/resumen/resumen_main');
 	}
 
 	public function noticias()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminuser/login_page', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/noticias/noticias_main');
 		$this->load->view('footer', array("script" => "mc/noticias/javascript"));
@@ -116,6 +116,8 @@ class Mc extends CI_Controller {
 			);
 			$this->load->model('noticias_m');
 			$result = $this->noticias_m->anadir_noticias($datos_array);
+			echo json_encode(array('status' => 'OK'));
+			exit();
 		}
 		
 	}
@@ -123,12 +125,255 @@ class Mc extends CI_Controller {
 	public function citas()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminuser/login_page', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/citas/citas_main');
 		$this->load->view('footer', array("script" => "mc/citas/javascript"));
 	}
 	
+	public function informes()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		$this->load->view('header');
+		$this->load->view('mc/informes/informes_main');
+		$this->load->view('footer', array("script" => "mc/informes/javascript"));
+	}
+
+	public function trae_informes()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('informes_m');
+		$result = $this->informes_m->trae_informes();
+
+		$num_crisis_saloa = $this->informes_m->cuenta_informes(3, 1);
+		$result[0]['num_crisis_saloa'] = $num_crisis_saloa;
+		$num_urgencias_saloa = $this->informes_m->cuenta_informes(3, 2);
+		$result[0]['num_urgencias_saloa'] = $num_urgencias_saloa;
+		$num_cabecera_saloa = $this->informes_m->cuenta_informes(3, 3);
+		$result[0]['num_cabecera_saloa'] = $num_cabecera_saloa;
+		$num_otros_saloa = $this->informes_m->cuenta_informes(3, 4);
+		$result[0]['num_otros_saloa'] = $num_otros_saloa;
+
+
+		$num_urgencias_elena = $this->informes_m->cuenta_informes(2, 2);
+		$result[0]['num_urgencias_elena'] = $num_urgencias_elena;
+		$num_cabecera_elena = $this->informes_m->cuenta_informes(2, 3);
+		$result[0]['num_cabecera_elena'] = $num_cabecera_elena;
+		$num_otros_elena = $this->informes_m->cuenta_informes(2, 4);
+		$result[0]['num_otros_elena'] = $num_otros_elena;
+
+
+		$num_urgencias_dani = $this->informes_m->cuenta_informes(1, 2);
+		$result[0]['num_urgencias_dani'] = $num_urgencias_dani;
+		$num_cabecera_dani = $this->informes_m->cuenta_informes(1, 3);
+		$result[0]['num_cabecera_dani'] = $num_cabecera_dani;
+		$num_otros_dani = $this->informes_m->cuenta_informes(1, 4);
+		$result[0]['num_otros_dani'] = $num_otros_dani;
+//var_dump($result);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay informes"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+
+	}
+
+/*	public function trae_tipos_informe()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('informes_m');
+		$result = $this->informes_m->trae_tipos_informe();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay tipos"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+	}
+*/
+	public function anadir_informe()
+	{
+	  $this->load->library('form_validation');
+	  $this->form_validation->set_rules('titulo', 'Título', 'required|min_length[3]');
+	  $this->form_validation->set_rules('sintomas', 'Sintomas', 'required');
+	  $this->form_validation->set_rules('tipo', 'Tipo', 'required');
+	  $this->form_validation->set_rules('quien', 'Quien', 'required');
+	  $this->form_validation->set_rules('fechaInicio', 'Fecha Inicio', 'required');
+	  $this->form_validation->set_rules('fechaFin', 'Fecha Fin', 'required');
+	  $this->form_validation->set_rules('tratamiento', 'Tratamiento', 'required');
+		$error = Array();
+
+		if ($this->form_validation->run() == false) 
+		{
+			$error['titulo'] =  form_error('titulo');
+			$error['sintomas'] =  form_error('sintomas');
+			$error['tipo'] =  form_error('tipo');
+			$error['quien'] =  form_error('quien');
+			$error['fechaInicio'] =  form_error('fechaInicio');
+			$error['fechaFin'] =  form_error('fechaFin');
+			$error['tratamiento'] =  form_error('tratamiento');
+			
+			echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
+			exit();
+		
+		}	
+		else
+		{
+			$datos_array = array(
+					'titulo' => $this->input->post('titulo'),
+					'sintomas' => $this->input->post('sintomas'),
+					'tipo' => $this->input->post('tipo'),
+					'userID' => $this->input->post('quien'),
+					'fechaInicio' => $this->input->post('fechaInicio'),
+					'fechaFin' => $this->input->post('fechaFin'),
+					'tratamiento' => $this->input->post('tratamiento'),
+
+			);
+			$this->load->model('informes_m');
+			$result = $this->informes_m->anadir_informe($datos_array);
+			echo json_encode(array('status' => 'OK'));
+			exit();
+		}
+
+	}
+
+	public function horarios()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		$this->load->view('header');
+		$this->load->view('mc/horarios/horarios_main');
+		$this->load->view('footer', array("script" => "mc/horarios/javascript"));
+	}
+
+
+
+	public function trae_horarios()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('horarios_m');
+		$result = $this->horarios_m->trae_horarios();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode( $result);
+
+		}
+
+	}
+
+	public function anadir_horario()
+	{
+		$datos_array = array(
+				'title' => $this->input->post('title'),
+				'start' => $this->input->post('start'),
+				'end' => $this->input->post('end'),
+				'description' => $this->input->post('description'),
+				'allDay' => $this->input->post('allDay'),
+				'backgroundColor' => $this->input->post('backgroundColor'),
+				'borderColor' => $this->input->post('borderColor'),
+
+		);
+		$this->load->model('horarios_m');
+		$result = $this->horarios_m->anadir_horario($datos_array);
+		echo json_encode(array('status' => 'OK'));
+		exit();
+	}
+
+	public function elimina_horario()
+	{
+		$datos_array = array(
+				'title' => $this->input->post('title'),
+				'start' => $this->input->post('start'),
+		);
+		$this->load->model('horarios_m');
+		$result = $this->horarios_m->elimina_horario($datos_array);
+		echo json_encode(array('status' => 'OK'));
+		exit();
+	}
+
+	public function pendientes()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		$this->load->view('header');
+		$this->load->view('mc/pendientes/pendientes_main');
+		$this->load->view('footer', array("script" => "mc/pendientes/javascript"));
+	}
+
+	public function trae_pendientes()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('pendientes_m');
+		$result = $this->pendientes_m->trae_pendientes();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay temas pendientes"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+
+	}
+
+
+	public function anadir_pendientes()
+	{
+	  $this->load->library('form_validation');
+	  $this->form_validation->set_rules('titulo', 'Título', 'required|min_length[3]');
+	  $this->form_validation->set_rules('descripcion', 'Descripción', 'required');
+	  $this->form_validation->set_rules('prioridad', 'Prioridad', 'required');
+	  $this->form_validation->set_rules('asignado', 'Asignado', 'required');
+		$error = Array();
+
+		if ($this->form_validation->run() == false) 
+		{
+			$error['titulo'] =  form_error('titulo');
+			$error['descripcion'] =  form_error('descripcion');
+			$error['prioridad'] =  form_error('prioridad');
+			$error['asignado'] =  form_error('asignado');
+			
+			echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
+			exit();
+		
+		}	
+		else
+		{
+			$datos_array = array(
+					'titulo' => $this->input->post('titulo'),
+					'descripcion' => $this->input->post('descripcion'),
+					'prioridad' => $this->input->post('prioridad'),
+					'userID' => $this->input->post('asignado'),
+			);
+			$this->load->model('pendientes_m');
+			$result = $this->pendientes_m->anadir_pendientes($datos_array);
+			echo json_encode(array('status' => 'OK'));
+			exit();
+		}
+
+	}
+
 
 }
 

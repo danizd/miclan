@@ -23,7 +23,13 @@
 
           });
         }
+
         ini_events($('#external-events div.external-event'));
+
+
+
+
+
 
         /* initialize the calendar
          -----------------------------------------------------------------*/
@@ -32,19 +38,28 @@
         var d = date.getDate(),
                 m = date.getMonth(),
                 y = date.getFullYear();
+
         $('#calendar').fullCalendar({
+          lang: 'es',
           header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
           },
           buttonText: {
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
+            today: 'hoy',
+            month: 'mes',
+            week: 'semana',
+            day: 'dia'
           },
+
+
+
+events: "trae_horarios/",
+
+
           //Random default events
+     /*  
           events: [
             {
               title: 'All Day Event',
@@ -91,10 +106,14 @@
               borderColor: "#3c8dbc" //Primary (light-blue)
             }
           ],
+          */
+          eventDrop: function(event, delta) {
+          //  alert(event.title + ' ha sido movido ' + delta + ' dias\n' + '(should probably update your database)');
+        
+           },
           editable: true,
           droppable: true, // this allows things to be dropped onto the calendar !!!
-          drop: function (date, allDay) { // this function is called when something is dropped
-
+          drop: function(date, eventObject, allDay) {
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
 
@@ -106,6 +125,17 @@
             copiedEventObject.allDay = allDay;
             copiedEventObject.backgroundColor = $(this).css("background-color");
             copiedEventObject.borderColor = $(this).css("border-color");
+            description ="";  
+            backgroundColor = $(this).css("background-color");
+            borderColor = $(this).css("border-color");
+       
+            title=copiedEventObject.title; 
+            start= date.format(); 
+            end= date.format(); 
+            description=''; 
+            allDay='';
+            anadir_horario(title, start, end, description, allDay, backgroundColor, borderColor);
+
 
             // render the event on the calendar
             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
@@ -117,7 +147,22 @@
               $(this).remove();
             }
 
+          },
+
+
+          eventClick: function (calEvent, jsEvent, view) {     
+
+            bootbox.confirm("¿Estás segura de que quieres borrar este horario " + calEvent.title + "?", function(result) {
+              if (result == true) {
+                $('#calendar').fullCalendar('removeEvents', calEvent._id);
+                console.log(date);
+                start= calEvent.start.format(); 
+                title=calEvent.title; 
+                elimina_horario(title, start);   
+              };
+            }); 
           }
+
         });
 
         /* ADDING EVENTS */
@@ -142,6 +187,8 @@
           //Create events
           var event = $("<div />");
           event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+                    console.log(event);
+
           event.html(val);
           $('#external-events').prepend(event);
 
@@ -150,6 +197,34 @@
 
           //Remove event from text input
           $("#new-event").val("");
+
+
         });
-      
-    </script>
+
+        function anadir_horario(title, start, end, description, allDay, backgroundColor, borderColor) {
+          postData = {'title': title, 'start': start ,'end': end, 'description': "", 'allDay': false, 'backgroundColor': backgroundColor , 'borderColor': borderColor};
+          $.ajax({
+              url: 'anadir_horario/',
+              data: postData,
+              type: "POST",
+              success: function (json) {
+                  console.log('Añadido correctamente');
+              }
+          });
+        }     
+
+        function elimina_horario(title, start) {
+          postData = {'title': title, 'start': start};
+          $.ajax({
+              url: 'elimina_horario/',
+              data: postData,
+              type: "POST",
+              success: function (json) {
+                  console.log('Eliminado correctamente');
+              }
+          });
+        }
+
+
+
+</script>

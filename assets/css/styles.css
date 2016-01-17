@@ -2,7 +2,52 @@
     width: 600px;
     margin: 100px auto;
 }
-#error-titulo{color:red;}
-#error-enlace{color:red;}
-#error-foto{color:red;}
+#error-titulo,
+#error-enlace,
+#error-sintomas,
+#error-fechaInicio,
+#error-fechaFin,
+#error-tratamiento
+{color:red;}
 #correcto{text-align: center;font-size: x-large;color: #00a65a;}
+.box-header .right{
+	float:right;
+}
+.fc-color-picker li{
+	float:none;
+	margin-top: 10px;
+}
+.fc-color-picker li p {
+    font-size: 10px;
+    float: right;
+    width: 150px;
+    clear: both;
+}
+#calendar .fc-title {
+    font-size: 2em;
+}
+#pendientes .box-body p {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+}
+#prioridad{
+    float: right;
+}
+#prioridad .pri{
+    margin-right: 15px;
+    float: left;
+}
+.panel-body form {
+    float: left;
+}
+
+#pendientes .box {
+    height: 230px;
+}
+#pendientes .asignado{
+    position: absolute;
+    bottom: 6px;
+    width: 90%;
+    font-size: 1.5em;
+    text-align: right;
+}

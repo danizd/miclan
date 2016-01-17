@@ -101,7 +101,7 @@ function anadir_noticia()
       console.log( "La solicitud se ha completado correctamente." );
         if(data.status == "OK")
             {
-                setTimeout("location.href = 'noticias'",2000); // milliseconds, so 2 seconds 
+                setTimeout("location.href = 'noticias'",1000); // milliseconds, so 2 seconds 
                 $('#correcto').html("Noticia enviada correctamente");
 
             }

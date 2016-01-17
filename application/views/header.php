@@ -372,21 +372,18 @@ switch($this->router->class)
                 <span>Horarios Elena</span> 
               </a>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>Saloa</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Cuestiones médicas<i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Cuestiones médicas<i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="alergias"><i class="fa fa-circle-o"></i> Alergia</a></li>
-                    <li><a href="dudas"><i class="fa fa-circle-o"></i> Dudas pediátricas <i class="fa fa-angle-left pull-right"></i></a></li>
-                  </ul>
-                </li>
-                <li><a href="actividades"><i class="fa fa-circle-o"></i>Actividades<i class="fa fa-angle-left pull-right"></i></a></li>
+                <li><a href="informes"><i class="fa fa-circle-o"></i> Informes médicos</a></li>
+                <li><a href="dudas"><i class="fa fa-circle-o"></i> Dudas pediátricas <i class="fa fa-angle-left pull-right"></i></a></li>
               </ul>
+            </li>
+            <li>
+              <a href="actividades">
+                <i class="fa fa-circle-o"></i>
+                <span>Actividades para Saloa</span>
+              </a>
             </li>
             <li>
               <a href="quever">

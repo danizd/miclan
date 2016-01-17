@@ -16,6 +16,7 @@ class Noticias_m extends CI_Model {
          ");
         $this->db->from("noticias");
         $this->db->join('admin_users', 'admin_users.idUsuario = noticias.userID', 'LEFT JOIN');
+        $this->db->order_by('noticias.creada');
         $query = $this->db->get();
         $result = $query->result_array();
 

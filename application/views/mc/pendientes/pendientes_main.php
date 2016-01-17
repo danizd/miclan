@@ -1,11 +1,11 @@
   <section class="content-header">
     <h1>
-      Noticias
-      <small>Noticias que nos interesan</small>
+      Temas pendientes
+      <small>Solucionar cuanto antes</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="resumen"><i class="fa fa-dashboard"></i> Resumen</a></li>
-      <li class="active">Noticias</li>
+      <li><a href="resumen"><i class="fa fa-dashboard"></i> Portada</a></li>
+      <li class="active">Temas pendientes</li>
     </ol>
   </section>
    <section class="content">
@@ -17,14 +17,20 @@
           <form class="form-horizontal form-bordered">
               <div class="form-group">
                   <div class="col-sm-6">
-                      <a class="btn btn-primary" id="abre-modal"><i class="fa fa-plus"></i>  Añadir noticia</a>
+                      <a class="btn btn-primary" id="abre-modal"><i class="fa fa-plus"></i>  Añadir tema pendiente</a>
                   </div>                         
               </div>
           </form>
+          <div id="prioridad">
+            <h3>Prioridad</h3>
+            <div class="pri"><i class="fa fa-circle-o text-red"></i> <span>Importante</span></div>
+            <div class="pri"><i class="fa fa-circle-o text-yellow"></i> <span>Media</span></div>
+            <div class="pri"><i class="fa fa-circle-o text-green"></i> <span>Baja</span></div>
+          </div>
       </div>
     </div>
     <div class="row">
-      <div id="noticias"></div>
+      <div id="pendientes"></div>
     </div>
   </div>
 
@@ -37,7 +43,7 @@
         <h4 class="modal-title">Mi Clan</h4>
       </div>
       <div class="modal-body">
-        <p id="modal-message">Añade noticia</p>
+        <p id="modal-message">Añade Tema pendiente</p>
 
         <form class="form-horizontal" role="form" id="anadir-form">
             <div class="panel-body">
@@ -52,34 +58,39 @@
                 </div>
       
                 <div class="form-group">
-                    <label for="enlace" class="col-sm-4 control-label">Enlace</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="enlace" class="form-control" id="enlace" placeholder="Enlace a la noticia">
-                        <div id="error-enlace"></div>              
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label for="descripcion" class="col-sm-4 control-label">Descripción</label>
                     <div class="col-sm-8">
                         <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="Por qué te parece interesante">
+                        <div id="error-descripcion"></div>                    
                     </div>
                 </div>
-
-                 <div class="form-group" id="image-form-group" style="display: none;">
-                    <label for="inputImagen" class="col-sm-4 control-label">Imagen</label>
-                    <div class="col-sm-8">
-                        <img class="form-image"><br>
-                    </div>
-                </div>       
-
                 <div class="form-group">
-                    <label for="inputImagen" class="col-sm-4 control-label">Imagen</label>
+                    <label for="tipo" class="col-sm-4 control-label">Prioridad</label>
                     <div class="col-sm-8">
-                        <input type="file" name="foto" class="form-control" id="inputImagen" > 
-                        <div id="error-foto"></div>              
+                        <select name="prioridad" class="form-control autocomplete" style="width:100%" id="prioridad" 
+                        placeholder="Prioridad">
+                          <option value="">--Seleccciona--</option>
+                          <option value="1">Alta</option>
+                          <option value="2">Media </option>
+                          <option value="3">Baja</option>
+                        </select>
+                        <div id="error-prioridad"></div>              
                     </div>
-                </div> 
+                </div>  
+                <div class="form-group">
+                    <label for="asignado" class="col-sm-4 control-label">Asignado a </label>
+                    <div class="col-sm-8">
+                        <select name="asignado" class="form-control autocomplete" style="width:100%" id="asignado" 
+                        placeholder="Asignado a " >
+                          <option value="">--Seleccciona--</option>
+                          <option value="1">Dani</option>
+                          <option value="2">Elena</option>
+                          <option value="3">Saloa</option>
+                        </select>
+                        <div id="error-asignado"></div>              
+                    </div>
+                </div>  
+
                                         
             </div>
         </form>
@@ -87,7 +98,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="guarda-noticia">Guardar</button>
+        <button type="button" class="btn btn-primary" id="guarda-pendientes">Guardar</button>
       </div>
 
 

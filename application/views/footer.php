@@ -210,7 +210,9 @@
     <script src="/assets/dist/js/pages/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="/assets/plugins/fullcalendar/fullcalendar.min.js"></script>   
-    
+    <script src="/assets/plugins/fullcalendar/fullcalendar_lang.js"></script>   
+
+    <script src="/assets/plugins/bootbox/bootbox.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/assets/dist/js/demo.js"></script>
     <?php if (isset($script)) $this->load->view($script); ?>
