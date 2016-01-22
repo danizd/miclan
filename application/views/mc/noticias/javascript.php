@@ -16,6 +16,14 @@ function _open_bootbox(message)
 }
 */
 
+/*MEJORA
+ * 
+Extraer contenido de url de la noticia
+http://www.sanwebe.com/2013/06/extract-url-content-like-facebook-with-php-and-jquery
+ 
+ */
+
+
 function noticias() {
   $.ajax({
       url: "trae_noticias/",

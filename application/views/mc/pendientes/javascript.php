@@ -24,7 +24,9 @@ function pendientes() {
   })
  .done(function( data, textStatus, jqXHR ) {
      if ( console && console.log ) {
-        html ='';   
+    	 html_dani ='';   
+    	 html_elena ='';   
+    	 html_saloa ='';   
           if(data.status == "OK")
           {
               for (var i = 0; i < data.aaData.length; i++) {
@@ -35,20 +37,38 @@ function pendientes() {
                 var activada = data.aaData[i].activada; 
                 var clase = data.aaData[i].clase; 
                 var fecha = data.aaData[i].creada; 
-
-                html += '<div class="col-md-4"><div class="box box-'+ clase +' box-solid"><div class="box-header with-border">';
-                html += '<h3 class="box-title">' + titulo + '</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>';
-                html += '</div></div>';
-                html += '<div class="box-body" style="display: block;">';
-                html += '<p>' + descripcion +'</p>';
-                html += '<div class="asignado"> Asignado a '+ asignado +'</div>';
-                html += '</div></div></div>';
-
-                $('#pendientes').html(html);
-              };
-            }
-          else
-          {
+								if(asignado == 'Dani'){
+	                html_dani += '<div class="col-md-12"><div class="box box-'+ clase +' box-solid"><div class="box-header with-border">';
+	                html_dani += '<h3 class="box-title">' + titulo + '</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>';
+	                html_dani += '</div></div>';
+	                html_dani += '<div class="box-body" style="display: block;">';
+	                html_dani += '<p>' + descripcion +'</p>';
+	                html_dani += '<div class="asignado"> Asignado a '+ asignado +'</div>';
+	                html_dani += '</div></div></div>';
+	                $('#pendientes_dani').html(html_dani);
+              	}								
+	            	if(asignado == 'Elena'){
+		              html_elena += '<div class="col-md-12"><div class="box box-'+ clase +' box-solid"><div class="box-header with-border">';
+		              html_elena += '<h3 class="box-title">' + titulo + '</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>';
+		              html_elena += '</div></div>';
+		              html_elena += '<div class="box-body" style="display: block;">';
+		              html_elena += '<p>' + descripcion +'</p>';
+		              html_elena += '<div class="asignado"> Asignado a '+ asignado +'</div>';
+		              html_elena += '</div></div></div>';
+	                $('#pendientes_elena').html(html_elena);
+	          		}
+				        if(asignado == 'Saloa'){
+				            html_saloa += '<div class="col-md-12"><div class="box box-'+ clase +' box-solid"><div class="box-header with-border">';
+				            html_saloa += '<h3 class="box-title">' + titulo + '</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>';
+				            html_saloa += '</div></div>';
+				            html_saloa += '<div class="box-body" style="display: block;">';
+				            html_saloa += '<p>' + descripcion +'</p>';
+				            html_saloa += '<div class="asignado"> Asignado a '+ asignado +'</div>';
+				            html_saloa += '</div></div></div>';
+				            $('#pendientes_saloa').html(html_saloa);
+				      	}
+              }
+					} else	{
           _open_bootbox('<p>' + data.msg +  '</p>');
           }
      }
@@ -67,6 +87,8 @@ $('#abre-modal').on('click', abre_modal);
 function abre_modal()
 {
     $('#abreModal').modal();
+    $('#descripcion').wysihtml5();
+
 }
 
 

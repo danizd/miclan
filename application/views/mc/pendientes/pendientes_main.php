@@ -30,7 +30,44 @@
       </div>
     </div>
     <div class="row">
-      <div id="pendientes"></div>
+    
+    			<div class="col-md-4">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <i class="fa fa-warning"></i>
+                  <h3 class="box-title">Temas pendientes de Dani</h3>
+                  <img src="/assets/images/usuarios/dani-160x160.jpg" class="imagen-miniatura"/>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+     							 <div id="pendientes_dani"></div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>    
+    			<div class="col-md-4">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <i class="fa fa-warning"></i>
+                  <h3 class="box-title">Temas pendientes de Elena</h3>
+                  <img src="/assets/images/usuarios/elena-160x160.jpg" class="imagen-miniatura"/>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+     							 <div id="pendientes_elena"></div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>    
+    			<div class="col-md-4">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <i class="fa fa-warning"></i>
+                  <h3 class="box-title">Temas pendientes de Saloa</h3>
+                  <img src="/assets/images/usuarios/saloa-160x160.jpg" class="imagen-miniatura"/>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+     							 <div id="pendientes_saloa"></div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+    
     </div>
   </div>
 
@@ -58,13 +95,6 @@
                 </div>
       
                 <div class="form-group">
-                    <label for="descripcion" class="col-sm-4 control-label">Descripción</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="Por qué te parece interesante">
-                        <div id="error-descripcion"></div>                    
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="tipo" class="col-sm-4 control-label">Prioridad</label>
                     <div class="col-sm-8">
                         <select name="prioridad" class="form-control autocomplete" style="width:100%" id="prioridad" 
@@ -90,6 +120,17 @@
                         <div id="error-asignado"></div>              
                     </div>
                 </div>  
+                
+                <div class="form-group">
+                    <label for="descripcion" class="col-sm-4 control-label">Comentario</label>
+                    <div class="col-sm-12">
+                     <textarea id="descripcion" name="descripcion" rows="10" cols="100" placeholder="Escribe una breve explicación"> </textarea>
+                    <div id="error-descripcion"></div>              
+                    </div>
+                </div>
+                
+                
+
 
                                         
             </div>

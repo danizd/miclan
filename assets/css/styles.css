@@ -2,6 +2,13 @@
     width: 600px;
     margin: 100px auto;
 }
+.imagen-miniatura{
+	  width: 100%;
+    max-width: 45px;
+    height: auto;
+    border-radius: 50%;
+    float: right;
+}
 #error-titulo,
 #error-enlace,
 #error-sintomas,
@@ -37,17 +44,22 @@
     margin-right: 15px;
     float: left;
 }
+/*
 .panel-body form {
     float: left;
 }
-
-#pendientes .box {
-    height: 230px;
-}
-#pendientes .asignado{
-    position: absolute;
-    bottom: 6px;
+*/
+#pendientes_dani .box-title,
+#pendientes_elena .box-title,
+#pendientes_saloa .box-title
+ {
     width: 90%;
-    font-size: 1.5em;
+}
+#pendientes_dani .asignado,
+#pendientes_elena .asignado,
+#pendientes_saloa .asignado
+{
+
+    font-size: 1.3em;
     text-align: right;
 }

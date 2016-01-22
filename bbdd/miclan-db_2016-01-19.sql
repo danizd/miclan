@@ -2,11 +2,11 @@
 -- version 4.0.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1:3306
+-- Host: 127.0.0.1:3307
 
--- Generation Time: Jan 17, 2016 at 08:14 PM
+-- Generation Time: Jan 19, 2016 at 04:24 PM
 -- Server version: 5.5.33
--- PHP Version: 5.4.7
+-- PHP Version: 5.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,7 +34,7 @@ CREATE TABLE `admin_login_attempts` (
   `ip` varchar(45) DEFAULT NULL,
   `is_failed` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=599 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=601 ;
 
 --
 -- Dumping data for table `admin_login_attempts`
@@ -58,7 +58,9 @@ INSERT INTO `admin_login_attempts` (`id`, `username`, `attempt_date`, `ip`, `is_
 (595, 'danizd', '2016-01-16 06:26:56', '127.0.0.1', 0),
 (596, 'danizd', '2016-01-16 20:55:58', '127.0.0.1', 0),
 (597, 'danizd', '2016-01-17 10:39:15', '127.0.0.1', 0),
-(598, 'danizd', '2016-01-17 19:01:41', '127.0.0.1', 0);
+(598, 'danizd', '2016-01-17 19:01:41', '127.0.0.1', 0),
+(599, 'danizd', '2016-01-19 09:01:16', '127.0.0.1', 0),
+(600, 'danizd', '2016-01-19 09:36:50', '127.0.0.1', 0);
 
 -- --------------------------------------------------------
 
@@ -213,19 +215,25 @@ CREATE TABLE `pendientes` (
   `idPendientes` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
   `prioridad` tinyint(4) NOT NULL,
   `activada` tinyint(4) NOT NULL,
   `creada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idPendientes`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `pendientes`
 --
 
 INSERT INTO `pendientes` (`idPendientes`, `userID`, `titulo`, `descripcion`, `prioridad`, `activada`, `creada`) VALUES
-(1, 1, 'Cambio en la potencia electrica para ahorrar en la factura de la luz', 'Comprobar si es viable un cambio en la potencia electrica para ahorrar en la factura de la luz', 2, 1, '2016-01-17 12:15:19');
+(1, 1, 'Cambio en la potencia electrica para ahorrar en la factura de la luz', 'Comprobar si es viable un cambio en la potencia electrica para ahorrar en la factura de la luz', 2, 1, '2016-01-17 12:15:19'),
+(7, 2, 'Cuentas', 'Pasar los gastos de los ultimos meses de 2015 para cerrar el año', 1, 0, '2016-01-19 09:02:45'),
+(8, 1, 'Recuperar canales que faltan en la  TV de la habitación', 'Faltan la 1, la 2 y otros y habría que ordenarlos', 3, 0, '2016-01-19 09:03:58'),
+(9, 3, 'Dormir toda la noche en tu cama', 'Noches enteras y sin necesidad de encender la luz ni despertar a nadie', 2, 0, '2016-01-19 09:05:02'),
+(10, 2, 'Fotolibro y conseguir fotos creativas y de calidad', 'Avanzar en la realización del fotolibro. Esta  tarea implica conseguir fotos de calidad', 2, 0, '2016-01-19 09:07:08'),
+(11, 2, 'Cursos AFD', 'Revisar casi cada día si salen los cursos AFD en la web <a href="http://traballo.xunta.es/afd">http://traballo.xunta.es/afd</a>', 1, 0, '2016-01-19 09:09:59'),
+(12, 2, 'Quitar silla del coche de la puerta de casa', 'Darsela a su dueña o lo que haga falta. Quitarla de ahi', 1, 0, '2016-01-19 09:11:18');
 
 -- --------------------------------------------------------
 
