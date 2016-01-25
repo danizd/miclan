@@ -108,11 +108,7 @@ class Users_m extends CI_Model{
 			}
 			$result['make_login_result'] = array('status' => 'success');
 		}
-/*	
-		$pass = crypt('cadena', '$5$rounds=5000$p1o1h3b4g6s4fgfd5j7fb7n6$');
-		echo $pass;
-		die;
-	*/
+
 		return $result;
 	}
 

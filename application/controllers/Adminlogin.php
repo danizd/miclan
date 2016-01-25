@@ -1,8 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Adminlogin extends CI_Controller {
-
-   function login($idioma=null)
+   public function index()
    {
       $this->load->library('form_validation');
 
@@ -26,5 +25,7 @@ class Adminlogin extends CI_Controller {
 
       }
    }
+
+
 }
 ?>

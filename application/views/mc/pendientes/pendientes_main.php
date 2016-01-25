@@ -14,19 +14,26 @@
           <h4 class="panel-title">Opciones</h4>
       </div>
       <div class="panel-body">
-          <form class="form-horizontal form-bordered">
+        <div class="anadir-pendientes">
+          <form class="form-horizontal form-bordered ">
               <div class="form-group">
                   <div class="col-sm-6">
                       <a class="btn btn-primary" id="abre-modal"><i class="fa fa-plus"></i>  Añadir tema pendiente</a>
                   </div>                         
               </div>
           </form>
-          <div id="prioridad">
-            <h3>Prioridad</h3>
-            <div class="pri"><i class="fa fa-circle-o text-red"></i> <span>Importante</span></div>
-            <div class="pri"><i class="fa fa-circle-o text-yellow"></i> <span>Media</span></div>
-            <div class="pri"><i class="fa fa-circle-o text-green"></i> <span>Baja</span></div>
+          <div id="botones-solucionados">
+            <button class="btn btn-block btn-default btn-xs" onclick="trae_solucionados('1')">Temas solucionados de Dani</button>
+            <button class="btn btn-block btn-default btn-xs" onclick="trae_solucionados('2')">Temas solucionados de Elena</button>
+            <button class="btn btn-block btn-default btn-xs" onclick="trae_solucionados('3')">Temas solucionados de Saloa</button>
           </div>
+        </div>
+        <div id="prioridad">
+          <h3>Prioridad</h3>
+          <div class="pri"><i class="fa fa-circle-o text-red"></i> <span>Importante</span></div>
+          <div class="pri"><i class="fa fa-circle-o text-yellow"></i> <span>Media</span></div>
+          <div class="pri"><i class="fa fa-circle-o text-green"></i> <span>Baja</span></div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -146,3 +153,19 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="abreModalSol">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Mi Clan</h4>
+      </div>
+      <div class="modal-body">
+        <h5>Tema solucionados</h5>
+        <div id="solucionadas"> </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ 

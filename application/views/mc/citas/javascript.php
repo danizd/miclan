@@ -23,7 +23,13 @@
 
           });
         }
+
         ini_events($('#external-events div.external-event'));
+
+
+
+
+
 
         /* initialize the calendar
          -----------------------------------------------------------------*/
@@ -32,69 +38,32 @@
         var d = date.getDate(),
                 m = date.getMonth(),
                 y = date.getFullYear();
-        $('#calendar').fullCalendar({
+
+        $('#citas').fullCalendar({
+          lang: 'es',
           header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
           },
           buttonText: {
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
+            today: 'hoy',
+            month: 'mes',
+            week: 'semana',
+            day: 'dia'
           },
-          //Random default events
-          events: [
-            {
-              title: 'All Day Event',
-              start: new Date(y, m, 1),
-              backgroundColor: "#f56954", //red
-              borderColor: "#f56954" //red
-            },
-            {
-              title: 'Long Event',
-              start: new Date(y, m, d - 5),
-              end: new Date(y, m, d - 2),
-              backgroundColor: "#f39c12", //yellow
-              borderColor: "#f39c12" //yellow
-            },
-            {
-              title: 'Meeting',
-              start: new Date(y, m, d, 10, 30),
-              allDay: false,
-              backgroundColor: "#0073b7", //Blue
-              borderColor: "#0073b7" //Blue
-            },
-            {
-              title: 'Lunch',
-              start: new Date(y, m, d, 12, 0),
-              end: new Date(y, m, d, 14, 0),
-              allDay: false,
-              backgroundColor: "#00c0ef", //Info (aqua)
-              borderColor: "#00c0ef" //Info (aqua)
-            },
-            {
-              title: 'Birthday Party',
-              start: new Date(y, m, d + 1, 19, 0),
-              end: new Date(y, m, d + 1, 22, 30),
-              allDay: false,
-              backgroundColor: "#00a65a", //Success (green)
-              borderColor: "#00a65a" //Success (green)
-            },
-            {
-              title: 'Click for Google',
-              start: new Date(y, m, 28),
-              end: new Date(y, m, 29),
-              url: 'http://google.com/',
-              backgroundColor: "#3c8dbc", //Primary (light-blue)
-              borderColor: "#3c8dbc" //Primary (light-blue)
-            }
-          ],
+
+
+
+          events: "trae_citas/",
+
+          eventDrop: function(event, delta) {
+          //  alert(event.title + ' ha sido movido ' + delta + ' dias\n' + '(should probably update your database)');
+        
+           },
           editable: true,
           droppable: true, // this allows things to be dropped onto the calendar !!!
-          drop: function (date, allDay) { // this function is called when something is dropped
-
+          drop: function(date, eventObject, allDay) {
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
 
@@ -106,10 +75,21 @@
             copiedEventObject.allDay = allDay;
             copiedEventObject.backgroundColor = $(this).css("background-color");
             copiedEventObject.borderColor = $(this).css("border-color");
+            description ="";  
+            backgroundColor = $(this).css("background-color");
+            borderColor = $(this).css("border-color");
+       
+            title=copiedEventObject.title; 
+            start= date.format(); 
+            end= date.format(); 
+            description=''; 
+            allDay='';
+            anadir_cita(title, start, end, description, allDay, backgroundColor, borderColor);
+
 
             // render the event on the calendar
             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+            $('#citas').fullCalendar('renderEvent', copiedEventObject, true);
 
             // is the "remove after drop" checkbox checked?
             if ($('#drop-remove').is(':checked')) {
@@ -117,7 +97,22 @@
               $(this).remove();
             }
 
+          },
+
+
+          eventClick: function (calEvent, jsEvent, view) {     
+
+            bootbox.confirm("¿Estás segura de que quieres borrar este cita " + calEvent.title + "?", function(result) {
+              if (result == true) {
+                $('#citas').fullCalendar('removeEvents', calEvent._id);
+                console.log(date);
+                start= calEvent.start.format(); 
+                title=calEvent.title; 
+                elimina_cita(title, start);   
+              };
+            }); 
           }
+
         });
 
         /* ADDING EVENTS */
@@ -142,6 +137,8 @@
           //Create events
           var event = $("<div />");
           event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+                    console.log(event);
+
           event.html(val);
           $('#external-events').prepend(event);
 
@@ -150,6 +147,87 @@
 
           //Remove event from text input
           $("#new-event").val("");
+
+
         });
-      
-    </script>
+
+        function anadir_cita(title, start, end, description, allDay, backgroundColor, borderColor) {
+          postData = {'title': title, 'start': start ,'end': end, 'description': "", 'allDay': false, 'backgroundColor': backgroundColor , 'borderColor': borderColor};
+          $.ajax({
+              url: 'anadir_cita/',
+              data: postData,
+              type: "POST",
+              success: function (json) {
+                  console.log('Añadido correctamente');
+                  listado_citas();
+              }
+          });
+        }     
+
+        function elimina_cita(title, start) {
+          postData = {'title': title, 'start': start};
+          $.ajax({
+              url: 'elimina_cita/',
+              data: postData,
+              type: "POST",
+              success: function (json) {
+                  console.log('Eliminado correctamente');
+                  listado_citas();
+              }
+          });
+        }
+
+      function _open_bootbox(message)
+      {
+         bootbox.alert({
+             message: message,
+             callback: function () {
+             },
+             className: 'bootbox-sm'
+         }).on('hidden.bs.modal', function (e) {
+             if($('.modal.in').length > 0){
+                 $('body').addClass('modal-open');
+             }
+         });
+      }
+
+      function listado_citas() {
+        $.ajax({
+            url: "trae_listado_citas/",
+            dataType: 'json',
+            type: 'POST',
+        })
+       .done(function( data, textStatus, jqXHR ) {
+           if ( console && console.log ) {
+             html ='';   
+
+                if(data.status == "OK")
+                {
+                    for (var i = 0; i < data.aaData.length; i++) {
+                      var title = data.aaData[i].title; 
+                      var fecha = data.aaData[i].start; 
+                      var end = data.aaData[i].end; 
+
+                        html += '<div class="cita">';
+                        html += '<p>' + title +'</p>';
+                        html += '<div> Día '+ fecha +'</div>';
+                        html += '</div>';
+                        $('#listado-citas').html(html);      
+
+                    }
+                } else  {
+                _open_bootbox('<p>' + data.msg +  '</p>');
+                }
+           }
+       })
+       .fail(function( jqXHR, textStatus, errorThrown ) {
+           if ( console && console.log ) {
+               console.log( "La solicitud a fallado: " +  textStatus);
+           }
+        });
+      }
+
+      listado_citas();
+
+
+</script>

@@ -30,9 +30,13 @@
     width: 150px;
     clear: both;
 }
-#calendar .fc-title {
-    font-size: 2em;
+.horarios .fc-content {
+    text-align: center;
 }
+.horarios .fc-title {
+    font-size: 1.5em;
+}
+
 #pendientes .box-body p {
     margin: 0 0 10px;
     font-size: 1.2em;
@@ -44,11 +48,12 @@
     margin-right: 15px;
     float: left;
 }
-/*
-.panel-body form {
+
+.panel-body .anadir-pendientes {
     float: left;
+    width: 50%;
 }
-*/
+
 #pendientes_dani .box-title,
 #pendientes_elena .box-title,
 #pendientes_saloa .box-title
@@ -63,3 +68,55 @@
     font-size: 1.3em;
     text-align: right;
 }
+
+.citas .fc-content .fc-title {
+    font-size: 1em;
+}
+#listado-citas p{
+    font-size: 1.2em;
+    padding: 0px;
+    margin: 0px;
+    color: #23527c;
+}
+#listado-citas .cita{
+    border: 1px solid #23527c;
+    padding: 2px;
+    margin-bottom: 6px;
+}
+#abreModalSol .modal-body {
+    min-height: 600px;
+}
+#botones-solucionados{
+    float: left;
+    clear: both;
+    width: 100%;
+}
+#botones-solucionados button{
+    float: left;
+    width: 30%;
+    margin: 0px 10px;
+}
+
+.solucionado  {
+    float: left;
+    width: 100px;
+}
+#loader{
+    clear: both;
+    margin: 10px;
+    padding: 10px;
+}
+#result img, #result embed {
+    float: left;
+    margin: 0px 10px;
+}
+
+#result {
+    width: 50%;
+}
+/*
+#btn2 {
+    top: 60px;
+    position: relative;
+    left: 230px;
+}*/

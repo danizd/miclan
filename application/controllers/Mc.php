@@ -7,8 +7,11 @@ class Mc extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('users_m', '', TRUE);
 		if($this->users_m->login() == false) redirect('user/login', 'refresh');
-
-		redirect('vcab/events', 'refresh');
+/*	
+		$pass = crypt('tu_pass', '$5$rounds=5000$p1o1h3b4g6s4fgfd5j7fb7n6$');
+		echo $pass;
+		die;
+	*/
 	}
 
 	public function get_autocomplete_data($table = "", $show_search_term_as_option = true)
@@ -37,14 +40,14 @@ class Mc extends CI_Controller {
 	public function resumen()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
 		$this->load->view('mc/resumen/resumen_main');
 	}
 
 	public function noticias()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/noticias/noticias_main');
 		$this->load->view('footer', array("script" => "mc/noticias/javascript"));
@@ -68,6 +71,68 @@ class Mc extends CI_Controller {
 		}
 
 	}
+
+
+	public function extract_process()
+	{
+		$get_url = $this->input->post('url'); 
+
+
+		include_once("./assets/include/simple_html_dom.inc.php");
+
+if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {		
+	
+	//extracting HTML content for the URL 
+	$content = file_get_html($_POST["url"]); 
+	
+	//Parsing Title 
+	foreach($content->find('title') as $element) {
+		$title = $element->plaintext;
+	}
+	
+	//Parsing Body Content
+	foreach($content->find('body') as $element) {
+		$body_content =  implode(' ', array_slice(explode(' ', trim($element->plaintext)), 0, 50));
+	}
+
+	$image_url = array();
+	
+	//Parse Site Images
+	foreach($content->find('img') as $element){
+		if(filter_var($element->src, FILTER_VALIDATE_URL)){
+			list($width,$height) = getimagesize($element->src);
+			if($width>150 || $height>150){
+				$image_url[] =  $element->src;	
+			}
+		}
+	}
+	$image_div = "";
+	if(!empty($image_url[0])) {
+		$image_div = "<div class='image-extract'>" .
+		"<input type='hidden' id='index' value='0'/>" .
+		"<img id='image_url' src='" . $image_url[0] . "' />";
+		if(count($image_url)>1) {
+		$image_div .= "<div>" .
+		"<input type='button' class='btnNav' id='prev-extract' onClick=navigateImage(" . json_encode($image_url) . ",'prev') disabled />" .
+		"<input type='button' class='btnNav' id='next-extract' target='_blank' onClick=navigateImage(" . json_encode($image_url) . ",'next') />" .
+		"</div>";
+		}
+		$image_div .="</div>";
+		
+	}
+	
+	$output = $image_div . "<div class='content-extract'>" .
+	"<h3><a href='" . $_POST["url"] . "' target='_blank'>" . $title . "</a></h3>" .
+	"<div>" . $body_content . "</div>".
+	"</div>";
+	echo $output;
+}
+
+	}
+
+
+
+
 
 	public function anadir_noticias()
 	{
@@ -125,7 +190,7 @@ class Mc extends CI_Controller {
 	public function citas()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/citas/citas_main');
 		$this->load->view('footer', array("script" => "mc/citas/javascript"));
@@ -134,7 +199,7 @@ class Mc extends CI_Controller {
 	public function informes()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/informes/informes_main');
 		$this->load->view('footer', array("script" => "mc/informes/javascript"));
@@ -252,7 +317,7 @@ class Mc extends CI_Controller {
 	public function horarios()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/horarios/horarios_main');
 		$this->load->view('footer', array("script" => "mc/horarios/javascript"));
@@ -312,7 +377,7 @@ class Mc extends CI_Controller {
 	public function pendientes()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/login', 'refresh');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/pendientes/pendientes_main');
 		$this->load->view('footer', array("script" => "mc/pendientes/javascript"));
@@ -336,6 +401,48 @@ class Mc extends CI_Controller {
 		}
 
 	}
+
+	public function trae_solucionados()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('pendientes_m');
+		$id = $this->input->post('id');
+		$result = $this->pendientes_m->trae_solucionados($id);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay temas solucionados"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+
+	}
+
+	public function tema_solucionado()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('pendientes_m');
+		$id = $this->input->post('id');
+		$result = $this->pendientes_m->tema_solucionado($id);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay temas solucionados"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+
+	}
+
+
 
 
 	public function anadir_pendientes()
@@ -365,6 +472,7 @@ class Mc extends CI_Controller {
 					'descripcion' => $this->input->post('descripcion'),
 					'prioridad' => $this->input->post('prioridad'),
 					'userID' => $this->input->post('asignado'),
+					'activada' => 1,
 			);
 			$this->load->model('pendientes_m');
 			$result = $this->pendientes_m->anadir_pendientes($datos_array);
@@ -374,7 +482,77 @@ class Mc extends CI_Controller {
 
 	}
 
+	public function trae_citas()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('citas_m');
+		$result = $this->citas_m->trae_citas();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode( $result);
 
+		}
+
+	}
+	public function trae_listado_citas()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('citas_m');
+		$result = $this->citas_m->trae_citas();
+		foreach ($result as $key => $value) {
+			$date = date("d-m-Y", strtotime($result[$key]['start']));
+			$result[$key]['start'] = date("d-m-Y", strtotime($date));
+		}
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+
+	}
+
+
+	public function anadir_cita()
+	{
+		$datos_array = array(
+				'title' => $this->input->post('title'),
+				'start' => $this->input->post('start'),
+				'end' => $this->input->post('end'),
+				'description' => $this->input->post('description'),
+				'allDay' => $this->input->post('allDay'),
+				'backgroundColor' => $this->input->post('backgroundColor'),
+				'borderColor' => $this->input->post('borderColor'),
+
+		);
+		$this->load->model('citas_m');
+		$result = $this->citas_m->anadir_cita($datos_array);
+		echo json_encode(array('status' => 'OK'));
+		exit();
+	}
+
+	public function elimina_cita()
+	{
+		$datos_array = array(
+				'title' => $this->input->post('title'),
+				'start' => $this->input->post('start'),
+		);
+		$this->load->model('citas_m');
+		$result = $this->citas_m->elimina_cita($datos_array);
+		echo json_encode(array('status' => 'OK'));
+		exit();
+	}
 }
 
 /* End of file mc.php */

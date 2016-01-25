@@ -15,7 +15,7 @@
             <div class="col-md-2">
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h4 class="box-title">Eventos movibles</h4>
+                  <h4 class="box-title">Horarios movibles</h4>
                 </div>
                 <div class="box-body">
                   <!-- the events -->
@@ -31,7 +31,7 @@
               </div><!-- /. box -->
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Crea Evento</h3>
+                  <h3 class="box-title">Crea Horario</h3>
                 </div>
                 <div class="box-body">
                   <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
@@ -50,12 +50,15 @@
                 </div>
               </div>
             </div><!-- /.col -->
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-body no-padding">
                   <!-- THE CALENDAR -->
-                  <div id="calendar"></div>
+                  <div id="horarios" class="horarios"></div>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
+            </div><!-- /.col -->
+            <div class="col-md-1">
+
             </div><!-- /.col -->
           </div><!-- /.row -->

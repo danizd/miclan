@@ -3,9 +3,9 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2015-2016 <a href="http://danielzas.es">Desarrollo Zas</a>.</strong> Todos los derechsos reservados.
+        <strong>Copyright &copy; 2015-2016 <a href="http://danielzas.es">Daniel Zas</a>.</strong> Todos los derechos reservados.
       </footer>
-
+<?php /*
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Create the tabs -->
@@ -168,6 +168,8 @@
           </div><!-- /.tab-pane -->
         </div>
       </aside><!-- /.control-sidebar -->
+
+ */ ?>
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
@@ -176,8 +178,8 @@
     <!-- jQuery 2.1.4 -->
     <script src="/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip 
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
@@ -213,6 +215,9 @@
     <script src="/assets/plugins/fullcalendar/fullcalendar_lang.js"></script>   
 
     <script src="/assets/plugins/bootbox/bootbox.min.js"></script>
+    <script src="/assets/plugins/oembed/jquery.oembed.js"></script>
+
+
     <!-- AdminLTE for demo purposes -->
     <script src="/assets/dist/js/demo.js"></script>
     <?php if (isset($script)) $this->load->view($script); ?>

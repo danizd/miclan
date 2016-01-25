@@ -26,11 +26,6 @@
 
         ini_events($('#external-events div.external-event'));
 
-
-
-
-
-
         /* initialize the calendar
          -----------------------------------------------------------------*/
         //Date for the calendar events (dummy data)
@@ -39,7 +34,7 @@
                 m = date.getMonth(),
                 y = date.getFullYear();
 
-        $('#calendar').fullCalendar({
+        $('#horarios').fullCalendar({
           lang: 'es',
           header: {
             left: 'prev,next today',
@@ -139,7 +134,7 @@ events: "trae_horarios/",
 
             // render the event on the calendar
             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+            $('#horarios').fullCalendar('renderEvent', copiedEventObject, true);
 
             // is the "remove after drop" checkbox checked?
             if ($('#drop-remove').is(':checked')) {
@@ -154,7 +149,7 @@ events: "trae_horarios/",
 
             bootbox.confirm("¿Estás segura de que quieres borrar este horario " + calEvent.title + "?", function(result) {
               if (result == true) {
-                $('#calendar').fullCalendar('removeEvents', calEvent._id);
+                $('#horarios').fullCalendar('removeEvents', calEvent._id);
                 console.log(date);
                 start= calEvent.start.format(); 
                 title=calEvent.title; 

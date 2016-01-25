@@ -138,7 +138,7 @@
                 <!-- *****  Logo ***** -->
                 <div class="logo-container">
                     <a href="#">
-                        <img src="img/logo-header.png" height="37" width="197" alt="">
+                        <img src="/assets/images/logo-header.png"  height="37" width="197" alt="">
                     </a>
                 </div>
 
@@ -148,12 +148,12 @@
                 <div class="item active">
 
                     <!-- Set the first background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('img/slider/slider-4.jpg');">
+                    <div class="fill" style="background-image:url('/assets/images/slider/slider-1.jpg');">
                     </div>
                     <div class="carousel-caption">
-                        <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
-                        <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
-                        <p class="light margin-bottom-medium">Stop blending in & start leaving your mark on the web.</p>
+                        <h1 class="light mab-none">Nuestra</h1>
+                        <h1 class="light margin-bottom-medium mat-none"><strong class="bold-text">Aplicacion WEB</strong></h1>
+                        <p class="light margin-bottom-medium">Todo los que nos interesa en un solo sitio web.</p>
                         <div class="call-button">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
@@ -175,7 +175,7 @@
                 <div class="item">
 
                     <!-- Set the second background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('img/slider/slider-1.jpg');"></div>
+                    <div class="fill" style="background-image:url('/assets/images/slider/slider-2.jpg');"></div>
                     <div class="carousel-caption">
                         <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
                         <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
@@ -201,7 +201,7 @@
                 <div class="item">
 
                     <!-- Set the third background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('img/slider/slider-2.jpg');"></div>
+                    <div class="fill" style="background-image:url('/assets/images/slider/slider-3.jpg');"></div>
                     <div class="carousel-caption">
                         <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
                         <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
@@ -227,7 +227,7 @@
                 <div class="item">
 
                     <!-- Set the third background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('img/slider/slider-3.jpg');"></div>
+                    <div class="fill" style="background-image:url('/assets/images/slider/slider-4.jpg');"></div>
                     <div class="carousel-caption">
                         <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
                         <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
@@ -253,7 +253,7 @@
                 <div class="item">
 
                     <!-- Set the third background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('img/slider/slider-4.jpg');"></div>
+                    <div class="fill" style="background-image:url('/assets/images/slider/slider-5.jpg');"></div>
                     <div class="carousel-caption">
                         <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
                         <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>

@@ -120,7 +120,7 @@ function abre_modal()
 {
     $('#abreModal').modal();
     $('#tratamiento').wysihtml5();
-$('.input-group.date').datepicker({});
+//$('.input-group.date').datepicker({});
 
 /*MEJORAR no funciona el datepicker*/
 }

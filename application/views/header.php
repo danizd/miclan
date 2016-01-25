@@ -273,7 +273,7 @@ switch($this->router->class)
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/assets/images/usuarios/dani-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs">Dani</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -325,7 +325,7 @@ switch($this->router->class)
               <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p>Dani</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -373,16 +373,15 @@ switch($this->router->class)
               </a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Cuestiones médicas<i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="informes"><i class="fa fa-circle-o"></i> Informes médicos</a></li>
-                <li><a href="dudas"><i class="fa fa-circle-o"></i> Dudas pediátricas <i class="fa fa-angle-left pull-right"></i></a></li>
-              </ul>
+              <a href="informes">
+                <i class="fa fa-calendar"></i> 
+                <span>Informes médicos</span> 
+              </a>
             </li>
             <li>
               <a href="actividades">
                 <i class="fa fa-circle-o"></i>
-                <span>Actividades para Saloa</span>
+                <span>Saloa</span>
               </a>
             </li>
             <li>

@@ -14,19 +14,27 @@
           <h4 class="panel-title">Opciones</h4>
       </div>
       <div class="panel-body">
-          <form class="form-horizontal form-bordered">
-              <div class="form-group">
+        <div id="info">
+          <h3>URL de la noticias</h3>
+          <div id="lessoncup">
+            <div id="data">
+               <div class="form-group">
                   <div class="col-sm-6">
-                      <a class="btn btn-primary" id="abre-modal"><i class="fa fa-plus"></i>  Añadir noticia</a>
+                      <textarea name="" class="box" id="box"></textarea>
+                      <a class="btn btn-primary" id="btn"><i class="fa fa-plus"></i>  Envía</a>
                   </div>                         
               </div>
-          </form>
+              <div id="loader"></div>
+              <div id="result" class="result"></div>
+              <button id="btn2" style="display:none">Guarda la noticia</button>
+            </div>
+          </div>
+       </div>
       </div>
     </div>
     <div class="row">
-      <div id="noticias"></div>
+            <div id="noticias"></div>
     </div>
-  </div>
 
                 <!---  ///////////////////////////////////  Ventana modal //////////////////////////// -->
 <div class="modal fade" id="abreModal">
@@ -41,45 +49,9 @@
 
         <form class="form-horizontal" role="form" id="anadir-form">
             <div class="panel-body">
-                <input type="hidden" name="id" id="inputId" value="">
 
-                <div class="form-group">
-                    <label for="titulo" class="col-sm-4 control-label">Título</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="titulo" class="form-control" id="titulo" value="<?php echo set_value('titulo'); ?>" placeholder="Título">
-                        <div id="error-titulo"></div>
-                    </div>
-                </div>
-      
-                <div class="form-group">
-                    <label for="enlace" class="col-sm-4 control-label">Enlace</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="enlace" class="form-control" id="enlace" placeholder="Enlace a la noticia">
-                        <div id="error-enlace"></div>              
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="descripcion" class="col-sm-4 control-label">Descripción</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="Por qué te parece interesante">
-                    </div>
-                </div>
 
-                 <div class="form-group" id="image-form-group" style="display: none;">
-                    <label for="inputImagen" class="col-sm-4 control-label">Imagen</label>
-                    <div class="col-sm-8">
-                        <img class="form-image"><br>
-                    </div>
-                </div>       
-
-                <div class="form-group">
-                    <label for="inputImagen" class="col-sm-4 control-label">Imagen</label>
-                    <div class="col-sm-8">
-                        <input type="file" name="foto" class="form-control" id="inputImagen" > 
-                        <div id="error-foto"></div>              
-                    </div>
-                </div> 
                                         
             </div>
         </form>
