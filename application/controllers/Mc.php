@@ -44,6 +44,16 @@ class Mc extends CI_Controller {
 		$this->load->view('mc/resumen/resumen_main');
 	}
 
+	public function trae_usuario()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		header('Content-Type: application/json');
+		echo json_encode(array_merge(array("status" => "OK", "nombre" =>  $_SESSION["name"], "foto" => $_SESSION["photo"])));
+	}
+	
+	
+	
 	public function noticias()
 	{
 		$this->load->model('users_m');
@@ -71,7 +81,23 @@ class Mc extends CI_Controller {
 		}
 
 	}
-
+	public function cuenta_noticias()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('noticias_m');
+		$result = $this->noticias_m->cuenta_noticias();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "numero" =>  $result)));
+		
+		}
+	}
 
 	public function extract_process()
 	{
@@ -138,7 +164,7 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 	{
 		$this->load->model('users_m');
 		if($this->users_m->login() == false) exit();
-
+/*
 	  $this->load->library('form_validation');
 	  $this->form_validation->set_rules('titulo', 'Título', 'required|min_length[3]');
 	  $this->form_validation->set_rules('enlace', 'Enlace', 'required');
@@ -179,13 +205,43 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 					'activada' => 1,
 					'foto' => $filename
 			);
+			
+			*/
+			$datos_array = array(
+					'enlace' => $this->input->post('enlace'),
+					'descripcion' => $this->input->post('descripcion'),
+					'userID' => $_SESSION['user_id'],
+					'activada' => 1,
+			);
+		
 			$this->load->model('noticias_m');
 			$result = $this->noticias_m->anadir_noticias($datos_array);
 			echo json_encode(array('status' => 'OK'));
 			exit();
-		}
+		//}
 		
 	}
+	
+	public function desactiva_noticia()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('noticias_m');
+		$id = $this->input->post('id');
+		$result = $this->noticias_m->desactiva_noticia($id);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+	
+		}
+	
+	}
+	
 
 	public function citas()
 	{
@@ -341,9 +397,39 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 			echo json_encode( $result);
 
 		}
-
 	}
-
+	
+	public function trae_semanas()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('horarios_m');
+		$result = $this->horarios_m->trae_semanas();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+			
+		}
+	}
+	
+	public function anadir_semana()
+	{
+		$datos_array = array(
+				'etiqueta' => "Semana " . $this->input->post('etiqueta'),
+				'valor' => $this->input->post('valor'),	
+				'variables_ID' => 3
+		);
+		$this->load->model('horarios_m');
+		$result = $this->horarios_m->anadir_semana($datos_array);
+		echo json_encode(array('status' => 'OK'));
+		exit();
+	}
+	
 	public function anadir_horario()
 	{
 		$datos_array = array(

@@ -20,21 +20,19 @@
 .box-header .right{
 	float:right;
 }
-.fc-color-picker li{
-	float:none;
-	margin-top: 10px;
+.fc-color-picker li a{
+    margin-right: 10px;
 }
 .fc-color-picker li p {
     font-size: 10px;
     float: right;
-    width: 150px;
     clear: both;
 }
 .horarios .fc-content {
     text-align: center;
 }
 .horarios .fc-title {
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 
 #pendientes .box-body p {
@@ -67,6 +65,7 @@
 
     font-size: 1.3em;
     text-align: right;
+    display: none;
 }
 
 .citas .fc-content .fc-title {
@@ -120,3 +119,47 @@
     position: relative;
     left: 230px;
 }*/
+
+.contenido-not b{
+	display: inline-block;
+}
+.contenido-not img, .contenido-not embed, .contenido-not video {
+	  max-width:300px;
+    margin: 4px auto;
+    display: block;
+}
+
+.desactiva{
+	width:30%;
+}
+
+.foto-perfil {
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+}
+
+.user-menu .foto-perfil {
+    max-width: 30px;
+}
+
+.user-menu .foto-perfil {
+    float: left;
+    margin-right: 10px;
+}
+
+.user-menu .imagen-perfil {
+    width: 80px;
+}
+.input-group .input-media {
+    width: 36%;
+    float: left;
+}
+.mtop  {
+    margin-top: 30px;
+    padding: 20px 0px 5px 0px;
+    border-top: 1px solid #E2E2E2;
+}
+
+
+

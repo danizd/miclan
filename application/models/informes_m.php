@@ -35,7 +35,6 @@ class Informes_m extends CI_Model {
     }
     public function anadir_informe($datos_array)
     {
-
          return $this->db->insert('informes', $datos_array);
     }
 

@@ -46,5 +46,31 @@ class Horarios_m extends CI_Model {
             return true;
         }
     }
-
+    
+    public function trae_semanas()
+    {
+    	$this->db->select("
+							variables_options.etiqueta,
+							variables_options.valor,
+    			");
+    	$this->db->from("variables_options");
+    	$this->db->where('variables_options.variables_ID', 3);
+    	$query = $this->db->get();
+    	$result = $query->result_array();
+    
+    	if(is_array($result) && count($result) > 0)
+    	{
+    		return $result;
+    	}
+    	else
+    	{
+    		return array();
+    	}
+    }
+    
+    
+    public function anadir_semana($datos_array)
+    {
+    	return $this->db->insert('variables_options', $datos_array);
+    }
 }

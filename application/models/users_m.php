@@ -5,7 +5,7 @@ class Users_m extends CI_Model{
 	public function login()
 	{
 	//	session_start();
-		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == "yes" && isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['name']) && isset($_SESSION['user_full_name'])) return true;
+		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == "yes" && isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['name']) && isset($_SESSION['photo']) && isset($_SESSION['user_full_name'])) return true;
 		else return false;
 	}
 
@@ -73,6 +73,7 @@ class Users_m extends CI_Model{
 					$user_id = (string)$check_user_credentials_result['0']['idUsuario'];
 					$username = $check_user_credentials_result['0']['username'];
 					$name = $check_user_credentials_result['0']['name'];
+					$photo = $check_user_credentials_result['0']['photo'];
 					$user_full_name = (empty($check_user_credentials_result['0']['lastname'])) ? $check_user_credentials_result['0']['name'] : $check_user_credentials_result['0']['name'] . " " . $check_user_credentials_result['0']['lastname'];
 					$flag_failed = 0;
 				}
@@ -101,7 +102,8 @@ class Users_m extends CI_Model{
 			$_SESSION['username'] = $username;
 			$_SESSION['name'] = $name;
 			$_SESSION['user_full_name'] = $user_full_name;
-	//		$_SESSION['user_role'] = $user_role;
+			$_SESSION['photo'] = $photo;
+			//		$_SESSION['user_role'] = $user_role;
 			if(file_exists($this->config->item('avatars_path') . $user_id . '.jpg'))
 			{
 				$_SESSION['avatar'] = $user_id . '.jpg';

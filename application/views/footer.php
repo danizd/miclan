@@ -216,6 +216,7 @@
 
     <script src="/assets/plugins/bootbox/bootbox.min.js"></script>
     <script src="/assets/plugins/oembed/jquery.oembed.js"></script>
+    <script src="/assets/js/portada.js"></script>
 
 
     <!-- AdminLTE for demo purposes -->

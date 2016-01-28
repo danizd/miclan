@@ -41,7 +41,7 @@
     			<div class="col-md-4">
               <div class="box box-default">
                 <div class="box-header with-border">
-                  <i class="fa fa-warning"></i>
+                  <i class="fa fa-bell-o"></i>
                   <h3 class="box-title">Temas pendientes de Dani</h3>
                   <img src="/assets/images/usuarios/dani-160x160.jpg" class="imagen-miniatura"/>
                 </div><!-- /.box-header -->
@@ -53,7 +53,7 @@
     			<div class="col-md-4">
               <div class="box box-default">
                 <div class="box-header with-border">
-                  <i class="fa fa-warning"></i>
+                  <i class="fa fa-bell-o"></i>
                   <h3 class="box-title">Temas pendientes de Elena</h3>
                   <img src="/assets/images/usuarios/elena-160x160.jpg" class="imagen-miniatura"/>
                 </div><!-- /.box-header -->
@@ -65,7 +65,7 @@
     			<div class="col-md-4">
               <div class="box box-default">
                 <div class="box-header with-border">
-                  <i class="fa fa-warning"></i>
+                  <i class="fa fa-bell-o"></i>
                   <h3 class="box-title">Temas pendientes de Saloa</h3>
                   <img src="/assets/images/usuarios/saloa-160x160.jpg" class="imagen-miniatura"/>
                 </div><!-- /.box-header -->

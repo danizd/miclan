@@ -6,9 +6,7 @@ class Noticias_m extends CI_Model {
         $this->db->select("
             noticias.idNoticia, 
             noticias.userID,
-            noticias.titulo, 
             noticias.descripcion, 
-            noticias.foto, 
             noticias.enlace, 
             noticias.creada, 
             admin_users.name as autor,
@@ -16,6 +14,7 @@ class Noticias_m extends CI_Model {
          ");
         $this->db->from("noticias");
         $this->db->join('admin_users', 'admin_users.idUsuario = noticias.userID', 'LEFT JOIN');
+        $this->db->where('noticias.activada', 1);
         $this->db->order_by('noticias.creada');
         $query = $this->db->get();
         $result = $query->result_array();
@@ -35,5 +34,30 @@ class Noticias_m extends CI_Model {
          return $this->db->insert('noticias', $datos_array);
     }
 
-
+    public function desactiva_noticia($id)
+    {
+    	$this->db->where('noticias.idNoticia', $id);
+    	$this->db->set('activada', 0, FALSE);
+    	$this->db->update('noticias');
+    
+    	if($this->db->affected_rows() != 1)
+    	{
+    		return false;
+    	}
+    	else
+    	{
+    		return true;
+    	}
+    }
+    
+    public function cuenta_noticias()
+    {
+    	$this->db->select("noticias.idNoticia");
+    	$this->db->from("noticias");
+    	$this->db->where('noticias.activada', 1);
+    	$query = $this->db->get();
+    	$result = $query->result_array();
+			return count($result);
+    }
+    
 }

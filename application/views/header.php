@@ -63,6 +63,8 @@ switch($this->router->class)
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -96,7 +98,7 @@ switch($this->router->class)
                       <li><!-- start message -->
                         <a href="#">
                           <div class="pull-left">
-                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
+             								 <div class="imagen-perfil"></div>
                           </div>
                           <h4>
                             Support Team
@@ -108,7 +110,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
+              							<div class="imagen-perfil"></div>
                           </div>
                           <h4>
                             AdminLTE Design Team
@@ -120,7 +122,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
+         								     <div class="imagen-perfil"></div>
                           </div>
                           <h4>
                             Developers
@@ -132,7 +134,7 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
+          							    <div class="imagen-perfil"></div>
                           </div>
                           <h4>
                             Sales Department
@@ -144,8 +146,8 @@ switch($this->router->class)
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
-                          </div>
+           								   <div class="imagen-perfil"></div>
+           	               </div>
                           <h4>
                             Reviewers
                             <small><i class="fa fa-clock-o"></i> 2 days</small>
@@ -272,13 +274,12 @@ switch($this->router->class)
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/assets/images/usuarios/dani-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Dani</span>
+     				         <div class="imagen-perfil"></div>
+                  <span class="hidden-xs nombre-perfil"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       Daniel Zas - Desarrollador Web 
                       <small>Member since Nov. 2015</small>
@@ -322,10 +323,10 @@ switch($this->router->class)
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="/assets/images/usuarios/dani-160x160.jpg" class="img-circle" alt="User Image">
+              <div class="imagen-perfil"></div>
             </div>
             <div class="pull-left info">
-              <p>Dani</p>
+              <p class="nombre-perfil"></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -349,14 +350,14 @@ switch($this->router->class)
             </li>
             <li class="treeview">
               <a href="noticias">
-                <i class="fa fa-files-o"></i>
+                <i class="fa fa-newspaper-o"></i>
                 <span>Noticias</span>
-                <span class="label label-primary pull-right">4</span>
+                <span id="num_noticias" class="label label-primary pull-right"></span>
               </a>
             </li>
             <li>
               <a href="pendientes">
-                <i class="fa fa-envelope"></i> 
+                <i class="fa fa-bell-o"></i> 
                 <span>Temas pendientes</span> 
               </a>
             </li>
@@ -374,13 +375,13 @@ switch($this->router->class)
             </li>
             <li>
               <a href="informes">
-                <i class="fa fa-calendar"></i> 
+                <i class="fa fa-stethoscope"></i> 
                 <span>Informes médicos</span> 
               </a>
             </li>
             <li>
               <a href="actividades">
-                <i class="fa fa-circle-o"></i>
+                <i class="fa fa-child"></i>
                 <span>Saloa</span>
               </a>
             </li>
