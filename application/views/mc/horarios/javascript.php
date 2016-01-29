@@ -191,6 +191,7 @@
             		              var valor = data.aaData[i].valor; 
             	                html += '<div class="col-md-6">';
             	                html += etiqueta;
+            	                html += ' - ';
             	                html += valor; 
             	                html += '</div>';
             	                $('#semanas').html(html);
