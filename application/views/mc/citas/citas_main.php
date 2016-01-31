@@ -54,7 +54,7 @@
               </div>
 
             </div><!-- /.col -->
-            <div class="col-md-7">
+            <div class="col-md-8">
               <div class="box box-primary">
                 <div class="box-body no-padding">
                   <!-- THE CALENDAR -->
@@ -62,7 +62,7 @@
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
             </div><!-- /.col -->
-            <div class="col-md-2">
+            <div class="col-md-1">
 
             </div><!-- /.col -->
           </div><!-- /.row -->

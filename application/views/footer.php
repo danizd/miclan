@@ -178,7 +178,7 @@
     <!-- jQuery 2.1.4 -->
     <script src="/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip 
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -213,14 +213,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="/assets/plugins/fullcalendar/fullcalendar.min.js"></script>   
     <script src="/assets/plugins/fullcalendar/fullcalendar_lang.js"></script>   
-
+    <script src="/assets/plugins/chartjs/Chart.min.js"></script>
     <script src="/assets/plugins/bootbox/bootbox.min.js"></script>
     <script src="/assets/plugins/oembed/jquery.oembed.js"></script>
     <script src="/assets/js/portada.js"></script>
 
 
     <!-- AdminLTE for demo purposes -->
-    <script src="/assets/dist/js/demo.js"></script>
+   <!--   <script src="/assets/dist/js/demo.js"></script>-->
     <?php if (isset($script)) $this->load->view($script); ?>
 
   </body>

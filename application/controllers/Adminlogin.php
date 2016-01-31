@@ -25,7 +25,15 @@ class Adminlogin extends CI_Controller {
 
       }
    }
+   public function logout()
+   {
+      $this->load->helper('url');
+      $this->load->model('users_m');
+      if($this->users_m->login() == false) redirect('/', 'refresh');
 
+      $result = $this->users_m->logout();
+      redirect('mc/index', 'refresh');
+   }
 
 }
 ?>

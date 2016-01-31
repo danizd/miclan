@@ -96,4 +96,15 @@ class Pendientes_m extends CI_Model {
             return true;
         }
     }
+
+    public function cuenta_pendientes($id)
+    {
+        $this->db->select("pendientes.idPendientes");
+        $this->db->from("pendientes");
+        $this->db->where('pendientes.userID', $id);
+        $query = $this->db->get();
+        $result = $query->result_array();
+            return count($result);
+    }
+
 }

@@ -129,6 +129,14 @@
     display: block;
 }
 
+
+.contenido-quever img{
+    max-width: 300px;
+    float: left;
+    margin-right: 30px;
+}
+
+
 .desactiva{
 	width:30%;
 }
@@ -138,18 +146,25 @@
     max-width: 45px;
     height: auto;
 }
-
+.imagen-perfil {
+    width: 250px;
+}
 .user-menu .foto-perfil {
     max-width: 30px;
-}
-
-.user-menu .foto-perfil {
     float: left;
     margin-right: 10px;
 }
+.user-menu .user-header .foto-perfil {
+    width: 130px;
+    float: none;
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 130px;
+}
 
+}
 .user-menu .imagen-perfil {
-    width: 80px;
+    width: 100%;
 }
 .input-group .input-media {
     width: 36%;
@@ -161,5 +176,25 @@
     border-top: 1px solid #E2E2E2;
 }
 
+.semanas {
+    font-size: 1.1em;
+    font-weight: bold;
+}
 
 
+#semanas .titulo {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #9A9A9A;
+}
+.filmaffinity, #infoquever {
+    float: left;
+    width: 50%;
+}
+
+#quever button {
+    margin-right: 10px;
+}
+
+.sincursor{
+    cursor: initial;
+}

@@ -86,8 +86,8 @@ function noticias() {
 	          if(data.status == "OK")
 	          {
 	              for (var i = 0; i < data.aaData.length; i++) {
-		              var idNoticia = data.aaData[i].idNoticia; 
-		              var autor = data.aaData[i].autor; 
+		            var idNoticia = data.aaData[i].idNoticia; 
+		            var autor = data.aaData[i].autor; 
 	                var autor_foto = data.aaData[i].autor_foto; 
 	                var descripcion = data.aaData[i].descripcion; 
 	                var enlace = data.aaData[i].enlace; 

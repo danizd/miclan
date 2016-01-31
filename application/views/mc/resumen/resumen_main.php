@@ -150,22 +150,6 @@
                     <!-- Set the first background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('/assets/images/slider/slider-1.jpg');">
                     </div>
-                    <div class="carousel-caption">
-                        <h1 class="light mab-none">Nuestra</h1>
-                        <h1 class="light margin-bottom-medium mat-none"><strong class="bold-text">Aplicacion WEB</strong></h1>
-                        <p class="light margin-bottom-medium">Todo los que nos interesa en un solo sitio web.</p>
-                        <div class="call-button">
-                            <div class="row">
-                                <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
-                                    <a href="noticias" class="button pull-right internal-link bold-text light hvr-grow" data-rel="#portfolio">Administra</a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <a href="#about-us" class="button pull-left internal-link bold-text main-bg hvr-grow" data-rel="#about-us">About Us</a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="overlay"></div>
                 </div>
 
@@ -176,22 +160,6 @@
 
                     <!-- Set the second background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('/assets/images/slider/slider-2.jpg');"></div>
-                    <div class="carousel-caption">
-                        <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
-                        <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
-                        <p class="light margin-bottom-medium">Stop blending in & start leaving your mark on the web.</p>
-                        <div class="call-button">
-                            <div class="row">
-                                <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
-                                    <a href="#portfolio" class="button pull-right internal-link bold-text light hvr-grow" data-rel="#portfolio">Our Work</a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <a href="#about-us" class="button pull-left internal-link bold-text main-bg hvr-grow" data-rel="#about-us">About Us</a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="overlay"></div>
                 </div>
 
@@ -202,22 +170,6 @@
 
                     <!-- Set the third background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('/assets/images/slider/slider-3.jpg');"></div>
-                    <div class="carousel-caption">
-                        <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
-                        <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
-                        <p class="light margin-bottom-medium">Stop blending in & start leaving your mark on the web.</p>
-                        <div class="call-button">
-                            <div class="row">
-                                <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
-                                    <a href="#portfolio" class="button pull-right internal-link bold-text light hvr-grow" data-rel="#portfolio">Our Work</a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <a href="#about-us" class="button pull-left internal-link bold-text main-bg hvr-grow" data-rel="#about-us">About Us</a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="overlay"></div>
                 </div>
 
@@ -228,22 +180,6 @@
 
                     <!-- Set the third background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('/assets/images/slider/slider-4.jpg');"></div>
-                    <div class="carousel-caption">
-                        <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
-                        <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
-                        <p class="light margin-bottom-medium">Stop blending in & start leaving your mark on the web.</p>
-                        <div class="call-button">
-                            <div class="row">
-                                <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
-                                    <a href="#portfolio" class="button pull-right internal-link bold-text light hvr-grow" data-rel="#portfolio">Our Work</a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <a href="#about-us" class="button pull-left internal-link bold-text main-bg hvr-grow" data-rel="#about-us">About Us</a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="overlay"></div>
                 </div>
 
@@ -254,22 +190,6 @@
 
                     <!-- Set the third background image using inline CSS below. -->
                     <div class="fill" style="background-image:url('/assets/images/slider/slider-5.jpg');"></div>
-                    <div class="carousel-caption">
-                        <h1 class="light mab-none">This is <strong class="bold-text">KreFolio</strong></h1>
-                        <h1 class="light margin-bottom-medium mat-none">And We Are <strong class="bold-text">Awesome</strong></h1>
-                        <p class="light margin-bottom-medium">Stop blending in & start leaving your mark on the web.</p>
-                        <div class="call-button">
-                            <div class="row">
-                                <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
-                                    <a href="#portfolio" class="button pull-right internal-link bold-text light hvr-grow" data-rel="#portfolio">Our Work</a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <a href="#about-us" class="button pull-left internal-link bold-text main-bg hvr-grow" data-rel="#about-us">About Us</a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="overlay"></div>
                 </div>
             </div> <!-- *** end wrapper *** -->
@@ -292,10 +212,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 wow slideInLeft animated">
-                    <p class="light-text">Like What You See? We're Just Getting Started</p>
+                    <p class="light-text">Todo lo que nos interesa en un solo lugar</p>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 button-container wow slideInRight animated">
-                    <a href="#portfolio" class="button light internal-link pull-left hvr-grow" data-rel="#portfolio">View Portfolio</a>
+                    <a href="noticias" class="button light internal-link pull-left hvr-grow" data-rel="#Administra">Administra</a>
                 </div>
                 <div class="clearfix"></div>
             </div>

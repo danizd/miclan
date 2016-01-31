@@ -82,7 +82,36 @@ switch($this->router->class)
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
           </a>
-          <div class="navbar-custom-menu">
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <div class="imagen-perfil"></div>
+                  <span class="hidden-xs nombre-perfil"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                   
+                      <div class="imagen-perfil"></div>
+                    
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-right">
+                      <a href="../adminlogin/logout" class="btn bg-navy btn-flat margin">Cierra sesión</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+
+
+
+
+     <?php /*     <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               <li class="dropdown messages-menu">
@@ -313,7 +342,7 @@ switch($this->router->class)
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
               </li>
             </ul>
-          </div>
+          </div> */?>
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -359,6 +388,7 @@ switch($this->router->class)
               <a href="pendientes">
                 <i class="fa fa-bell-o"></i> 
                 <span>Temas pendientes</span> 
+                <span id="num_pendientes" class="label label-danger pull-right"></span>
               </a>
             </li>
             <li>
@@ -380,7 +410,7 @@ switch($this->router->class)
               </a>
             </li>
             <li>
-              <a href="actividades">
+              <a href="saloa">
                 <i class="fa fa-child"></i>
                 <span>Saloa</span>
               </a>
@@ -389,6 +419,7 @@ switch($this->router->class)
               <a href="quever">
                 <i class="fa fa-tv"></i> 
                 <span>Que ver</span> 
+                <span id="num_quever" class="label label-primary pull-right"></span>
               </a>
             </li>
             <li class="header">Etiquetas</li>

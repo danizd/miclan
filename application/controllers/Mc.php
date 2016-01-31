@@ -6,7 +6,7 @@ class Mc extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$this->load->model('users_m', '', TRUE);
-		if($this->users_m->login() == false) redirect('user/login', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 /*	
 		$pass = crypt('tu_pass', '$5$rounds=5000$p1o1h3b4g6s4fgfd5j7fb7n6$');
 		echo $pass;
@@ -40,14 +40,14 @@ class Mc extends CI_Controller {
 	public function resumen()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		$this->load->view('mc/resumen/resumen_main');
 	}
 
 	public function trae_usuario()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		header('Content-Type: application/json');
 		echo json_encode(array_merge(array("status" => "OK", "nombre" =>  $_SESSION["name"], "foto" => $_SESSION["photo"])));
 	}
@@ -57,7 +57,7 @@ class Mc extends CI_Controller {
 	public function noticias()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/noticias/noticias_main');
 		$this->load->view('footer', array("script" => "mc/noticias/javascript"));
@@ -106,53 +106,53 @@ class Mc extends CI_Controller {
 
 		include_once("./assets/include/simple_html_dom.inc.php");
 
-if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {		
-	
-	//extracting HTML content for the URL 
-	$content = file_get_html($_POST["url"]); 
-	
-	//Parsing Title 
-	foreach($content->find('title') as $element) {
-		$title = $element->plaintext;
-	}
-	
-	//Parsing Body Content
-	foreach($content->find('body') as $element) {
-		$body_content =  implode(' ', array_slice(explode(' ', trim($element->plaintext)), 0, 50));
-	}
-
-	$image_url = array();
-	
-	//Parse Site Images
-	foreach($content->find('img') as $element){
-		if(filter_var($element->src, FILTER_VALIDATE_URL)){
-			list($width,$height) = getimagesize($element->src);
-			if($width>150 || $height>150){
-				$image_url[] =  $element->src;	
+		if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {		
+			
+			//extracting HTML content for the URL 
+			$content = file_get_html($_POST["url"]); 
+			
+			//Parsing Title 
+			foreach($content->find('title') as $element) {
+				$title = $element->plaintext;
 			}
+			
+			//Parsing Body Content
+			foreach($content->find('body') as $element) {
+				$body_content =  implode(' ', array_slice(explode(' ', trim($element->plaintext)), 0, 50));
+			}
+
+			$image_url = array();
+			
+			//Parse Site Images
+			foreach($content->find('img') as $element){
+				if(filter_var($element->src, FILTER_VALIDATE_URL)){
+					list($width,$height) = getimagesize($element->src);
+					if($width>150 || $height>150){
+						$image_url[] =  $element->src;	
+					}
+				}
+			}
+			$image_div = "";
+			if(!empty($image_url[0])) {
+				$image_div = "<div class='image-extract'>" .
+				"<input type='hidden' id='index' value='0'/>" .
+				"<img id='image_url' src='" . $image_url[0] . "' />";
+				if(count($image_url)>1) {
+				$image_div .= "<div>" .
+				"<input type='button' class='btnNav' id='prev-extract' onClick=navigateImage(" . json_encode($image_url) . ",'prev') disabled />" .
+				"<input type='button' class='btnNav' id='next-extract' target='_blank' onClick=navigateImage(" . json_encode($image_url) . ",'next') />" .
+				"</div>";
+				}
+				$image_div .="</div>";
+				
+			}
+			
+			$output = $image_div . "<div class='content-extract'>" .
+			"<h3><a href='" . $_POST["url"] . "' target='_blank'>" . $title . "</a></h3>" .
+			"<div>" . $body_content . "</div>".
+			"</div>";
+			echo $output;
 		}
-	}
-	$image_div = "";
-	if(!empty($image_url[0])) {
-		$image_div = "<div class='image-extract'>" .
-		"<input type='hidden' id='index' value='0'/>" .
-		"<img id='image_url' src='" . $image_url[0] . "' />";
-		if(count($image_url)>1) {
-		$image_div .= "<div>" .
-		"<input type='button' class='btnNav' id='prev-extract' onClick=navigateImage(" . json_encode($image_url) . ",'prev') disabled />" .
-		"<input type='button' class='btnNav' id='next-extract' target='_blank' onClick=navigateImage(" . json_encode($image_url) . ",'next') />" .
-		"</div>";
-		}
-		$image_div .="</div>";
-		
-	}
-	
-	$output = $image_div . "<div class='content-extract'>" .
-	"<h3><a href='" . $_POST["url"] . "' target='_blank'>" . $title . "</a></h3>" .
-	"<div>" . $body_content . "</div>".
-	"</div>";
-	echo $output;
-}
 
 	}
 
@@ -246,7 +246,7 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 	public function citas()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/citas/citas_main');
 		$this->load->view('footer', array("script" => "mc/citas/javascript"));
@@ -255,7 +255,7 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 	public function informes()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/informes/informes_main');
 		$this->load->view('footer', array("script" => "mc/informes/javascript"));
@@ -373,7 +373,7 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 	public function horarios()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/horarios/horarios_main');
 		$this->load->view('footer', array("script" => "mc/horarios/javascript"));
@@ -420,7 +420,7 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 	public function anadir_semana()
 	{
 		$datos_array = array(
-				'etiqueta' => "Semana " . $this->input->post('etiqueta'),
+				'etiqueta' => $this->input->post('etiqueta'),
 				'valor' => $this->input->post('valor'),	
 				'variables_ID' => 3
 		);
@@ -463,7 +463,7 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 	public function pendientes()
 	{
 		$this->load->model('users_m');
-		if($this->users_m->login() == false) redirect('adminlogin/index', 'refresh');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
 		$this->load->view('header');
 		$this->load->view('mc/pendientes/pendientes_main');
 		$this->load->view('footer', array("script" => "mc/pendientes/javascript"));
@@ -568,6 +568,28 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 
 	}
 
+
+	public function cuenta_pendientes()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('pendientes_m');
+		$id = $_SESSION['user_id'];
+		$result = $this->pendientes_m->cuenta_pendientes($id);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay peliculas o series"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "numero" =>  $result)));
+		
+		}
+	}
+
+
+
 	public function trae_citas()
 	{
 		$this->load->model('users_m');
@@ -639,6 +661,126 @@ if(!empty($get_url ) && filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
 		echo json_encode(array('status' => 'OK'));
 		exit();
 	}
+
+
+	public function saloa()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
+		$this->load->view('header');
+		$this->load->view('mc/saloa/saloa_main');
+		$this->load->view('footer', array("script" => "mc/saloa/javascript"));
+	}
+
+	public function quever()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
+		$this->load->view('header');
+		$this->load->view('mc/que_ver/quever_main');
+		$this->load->view('footer', array("script" => "mc/que_ver/javascript"));
+	}
+	public function trae_quever()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('quever_m');
+		$result = $this->quever_m->trae_quever();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay peliculas o series"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+
+	}
+	public function cuenta_quever()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('quever_m');
+		$result = $this->quever_m->cuenta_quever();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay peliculas o series"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "numero" =>  $result)));
+		
+		}
+	}
+
+	
+
+	public function anadir_quever()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+			$datos_array = array(
+					'enlace' => $this->input->post('enlace'),
+					'descripcion' => $this->input->post('descripcion'),
+					'userID' => $_SESSION['user_id'],
+					'descargada' => 0,
+					'vista' => 0,
+			);
+		
+			$this->load->model('quever_m');
+			$result = $this->quever_m->anadir_quever($datos_array);
+			echo json_encode(array('status' => 'OK'));
+			exit();
+		
+	}
+	
+	public function descargada_quever()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('quever_m');
+		$id = $this->input->post('id');
+		$result = $this->quever_m->descargada_quever($id);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay peliculas o series"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+	
+		}
+	
+	}
+		
+	public function vista_quever()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('quever_m');
+		$id = $this->input->post('id');
+		$result = $this->quever_m->vista_quever($id);
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay peliculas o series"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+	
+		}
+	
+	}
+
+
+
+
+
 }
 
 /* End of file mc.php */
