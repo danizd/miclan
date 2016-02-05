@@ -30,7 +30,6 @@ class Noticias_m extends CI_Model {
     }
     public function anadir_noticias($datos_array)
     {
-
          return $this->db->insert('noticias', $datos_array);
     }
 

@@ -37,13 +37,23 @@ class Mc extends CI_Controller {
 		echo json_encode(array("items" => $result));
 	}
 
+	public function portada()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
+		$this->load->view('mc/portada/portada_main');
+	}
+
 	public function resumen()
 	{
 		$this->load->model('users_m');
 		if($this->users_m->login() == false) redirect('/', 'refresh');
+		$this->load->view('header');
 		$this->load->view('mc/resumen/resumen_main');
+		$this->load->view('footer', array("script" => "mc/resumen/javascript"));
 	}
-
+	
+	
 	public function trae_usuario()
 	{
 		$this->load->model('users_m');
@@ -79,7 +89,6 @@ class Mc extends CI_Controller {
 			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
 
 		}
-
 	}
 	public function cuenta_noticias()
 	{
@@ -807,7 +816,42 @@ class Mc extends CI_Controller {
 		var_dump($this->email->print_debugger());
 	}
 
-
+	public function trae_pulsar()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('pulsar_m');
+		$result1 = $this->pulsar_m->trae_pulsar('Dani', 1);
+		$result2 = $this->pulsar_m->trae_pulsar('Elena', 2);
+		$usuario = array('usuario' => $_SESSION['user_id']);
+		$result = $result1 + $result2 + $usuario;
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+	
+		}
+	}
+	
+	public function anadir_pulsar()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$datos_array = array(
+				'valor' => $this->input->post('valor'),
+				'userID' => $_SESSION['user_id'],
+		);
+		$this->load->model('pulsar_m');
+		$result = $this->pulsar_m->anadir_pulsar($datos_array);
+		echo json_encode(array('status' => 'OK'));
+		exit();
+	
+	}
+	
 
 }
 

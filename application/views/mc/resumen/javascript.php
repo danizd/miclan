@@ -1,108 +1,179 @@
 <script>
 
+function pulsar() {
+	  $.ajax({
+	      url: "trae_pulsar/",
+	      dataType: 'json',
+	      type: 'POST',
+	  })
+	 .done(function( data, textStatus, jqXHR ) {
+	     if ( console && console.log ) {
+	          if(data.status == "OK")
+	          {
+			         var dani_pulsar = data.aaData['Dani'];            	                
+			      	 var elena_pulsar = data.aaData['Elena'];  
+			      	 var usuario = data.aaData['usuario'];  
+					     titulo1 = '<h4 class="box-title">Su valoración sobre nosotros</h4>';
+					     titulo2 = '<h4 class="box-title">Tu valoración sobre nosostros</h4>';
+								 
+								 
+					         $('#asi').html(titulo1);
+					         $('#cambia').html(titulo2);
+
+
+			      	//Pulsometro 1
+			      	$('#gauge').jqxGauge({
+			      	    ranges: [{ startValue: 0, endValue: 40, style: { fill: '#e53d37', stroke: '#e53d37' }, startDistance: 0, endDistance: 0 },
+			      	             { startValue: 40, endValue: 60, style: { fill: '#fad00b', stroke: '#fad00b' }, startDistance: 0, endDistance: 0 },
+			      	             { startValue: 60, endValue: 100, style: { fill: '#4cb848', stroke: '#4cb848' }, startDistance: 0, endDistance: 0}],
+			      	    cap: { size: '5%', style: { fill: '#2e79bb', stroke: '#2e79bb'} },
+			      	    border: { style: { fill: '#8e9495', stroke: '#7b8384', 'stroke-width': 1 } },
+			      	    ticksMinor: { interval: 5, size: '5%' },
+			      	    ticksMajor: { interval: 20, size: '10%' },       
+			      	    labels: { position: 'outside', interval:5 },
+			      	    pointer: { style: { fill: '#2e79bb' }, width: 5 },
+			      	    animationDuration: 1500,
+			      	    max:100
+			      	});
+
+			      	if(usuario == 1){
+			      			$('#gauge').jqxGauge('value', elena_pulsar);
+							}else if(usuario == 2){
+				      			$('#gauge').jqxGauge('value', dani_pulsar);
+							}else{
+				      			$('#gauge').jqxGauge('value', 0);
+							}
+			      	// Pulsometro 2
+			      	$('#gauge2').jqxGauge({
+			      	    ranges: [{ startValue: 0, endValue: 40, style: { fill: '#e53d37', stroke: '#e53d37' }, startDistance: 0, endDistance: 0 },
+			      	             { startValue: 40, endValue: 60, style: { fill: '#fad00b', stroke: '#fad00b' }, startDistance: 0, endDistance: 0 },
+			      	             { startValue: 60, endValue: 100, style: { fill: '#4cb848', stroke: '#4cb848' }, startDistance: 0, endDistance: 0}],
+			      	    cap: { size: '5%', style: { fill: '#2e79bb', stroke: '#2e79bb'} },
+			      	    border: { style: { fill: '#8e9495', stroke: '#7b8384', 'stroke-width': 1 } },
+			      	    ticksMinor: { interval: 5, size: '5%' },
+			      	    ticksMajor: { interval: 20, size: '10%' },       
+			      	    labels: { position: 'outside', interval:5 },
+			      	    pointer: { style: { fill: '#2e79bb' }, width: 5 },
+			      	    animationDuration: 1500,
+			      	    max:100
+			      	});
+			      	$('#slider2').css('left', '185px')
+			      	$('#slider2').jqxSlider({ min: 0, max: 100, mode: 'fixed', ticksFrequency: 20, width: 150, value: 120,  showButtons: false });
+			      	$('#slider2').mousedown(function () {
+			      	    $('#gauge2').jqxGauge('value', $('#slider2').jqxSlider('value'));
+
+			      	  var value = $("#gauge2").jqxGauge('val');
+		      	 		console.log('arriba');
+		      	 		console.log(value);
+			      	});
+
+			      	
+			      	$('#slider2').on('slideEnd', function (e) {
+			      	    $('#gauge2').jqxGauge('value', e.args.value);
+
+				      	var value2 = $("#gauge2").jqxGauge('val');
+		      	 		console.log('medio');
+		      	 		console.log(value2);
+			      	    
+			      	});
+
+			      	
+			      	$('#slider2').on('mousewheel', function () {
+			      	    $('#gauge2').jqxGauge('value', $('#slider2').jqxSlider('value'));
+
+
+			      	});
+
+
+			      	
+							if(usuario == 1){
+			      			$('#gauge2').jqxGauge('value', dani_pulsar);
+							}else if(usuario == 2){
+				      			$('#gauge2').jqxGauge('value', elena_pulsar);
+							}else{
+				      			$('#gauge2').jqxGauge('value', 0);
+							}
+
+
+							 $('#gauge2').jqxGauge('disable');
+							 $('#jqxbutton').click(function () {
+							     $('#gauge2').jqxGauge('enable');
+							     $('#slider2').show();
+						       $('#gauge2').on('valueChanged', function () {
+								     	var valor = $("#gauge2").jqxGauge('val');
+									    $('#jqxbutton').hide();
+								     	console.log(valor);
+											$('#envia').html('<input class="btn btn-warning btn-flat" type="button" id="envia" onclick="anadir_pulsar(' + valor +')" value="Pincha aquí para confirmar ' + valor +' como la nueva valoración" />');
+								     	
+									    /*	bootbox.confirm("La nueva valoracion será " + valor + ", ¿Estás de acuerdo?", function(result) {
+										      if(result == true){
+										        anadir_pulsar(valor);
+										      }
+										    }); 	*/					      
+									});
+							 });          	                
+	            }
+	          else
+	          {
+	          _open_bootbox('<p>' + data.msg +  '</p>');
+	          }
+	     }
+	 })
+	 .fail(function( jqXHR, textStatus, errorThrown ) {
+	     if ( console && console.log ) {
+	         console.log( "La solicitud a fallado: " +  textStatus);
+	     }
+	  });
+	}
+
+	pulsar();
+
+
+
+
+	function anadir_pulsar(valor)
+	{
+		var postData = {valor: valor};
+
+	  $.ajax({
+	      url: "anadir_pulsar/",
+	      dataType: 'json',
+	      type: 'POST',
+	      data : postData,
+	  })
+	  .done(function( data, textStatus, jqXHR ) {
+	    if ( console && console.log ) {
+	      console.log( "La solicitud se ha completado correctamente." );
+	        if(data.status == "OK")
+	            {
+	                setTimeout("location.href = 'resumen'",1000); // milliseconds, so 2 seconds 
+	                $('#correcto').html("Valoración guardada correctamente");
+	            }
+	            else
+	            {	 console.log(data.msg);	 }
+	    }
+	  })
+	  .fail(function( jqXHR, textStatus, errorThrown ) {
+	    if ( console && console.log ) {
+	      console.log( "La solicitud a fallado: " +  textStatus);
+	    }
+	  });
+
+
+	}
+
 function _open_bootbox(message)
 {
-   bootbox.alert({
-       message: message,
-       callback: function () {
-       },
-       className: 'bootbox-sm'
-   }).on('hidden.bs.modal', function (e) {
-       if($('.modal.in').length > 0){
-           $('body').addClass('modal-open');
-       }
-   });
+  bootbox.alert({
+      message: message,
+      callback: function () {
+      },
+      className: 'bootbox-sm'
+  }).on('hidden.bs.modal', function (e) {
+      if($('.modal.in').length > 0){
+          $('body').addClass('modal-open');
+      }
+  });
 }
-
-
-
-
-
-
-function summary() {
-
-  //  var id_user = document.getElementById("inputUser").value;
-    var id_user = 3;
-    var postData =  {'id_user': '3'};
-
-    
-        $.ajax({
-            url: "<?= base_url(); ?>vcab/get_events_by_user/",
-            dataType: 'json',
-            type: 'POST',
-            data: postData,
-            success: function(data) {       
-                html ='';   
-                
-                var myLatlng = new google.maps.LatLng(40.322740, 1.045954);
-                var mapOptions = {
-                  zoom: 7,
-                  center: myLatlng
-                };
-                var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-                if(data.status == "OK")
-                {
-                    for (var i = 0; i < data.aaData.length; i++) {
-                       var name = data.aaData[i].name; 
-                       var image = data.aaData[i].image; 
-                       var datetime = data.aaData[i].date; 
-                       var array_datetime = datetime.split(" ");
-                       var date = array_datetime[0];
-                       var image = data.aaData[i].image; 
-                       var description = data.aaData[i].description; 
-                       var city = data.aaData[i].city; 
-                       var country = data.aaData[i].country; 
-                       var image_filter = data.aaData[i].image_filter; 
-                       var layout_polaroid = data.aaData[i].layout_polaroid; 
-
-                       var location = data.aaData[i].location;                        
-                       var res = location.split(",");
-                       var lat = res[0];
-                       var lon = res[1];
-                       var marks = [lat, lon];
-  
-                        var infowindow = new google.maps.InfoWindow({
-                            content: name
-                        });
-
-                        
-                        var marks = new google.maps.LatLng(lat, lon);
-                        var marker = new google.maps.Marker({
-                            position: marks,
-                            map: map,
-                            title: name
-                        });
-
-                       html += '<div class="panel panel-info"><div class="panel-heading">';
-                       html += '<h1 class="panel-title">'+ name +'</h1>';
-                       html += '<div class="panel-options"><a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a><a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a> <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a></div></div>';
-                       html += '<div class="panel-body">';
-                       html += '<img style="width:200px; float: left; margin-right:40px" src="/static/images/events/'  + image + '"/>' ;
-                       html += '<div>Date: <strong>' + date + '</strong></div>' ;
-                       html += '<div>Description: <strong>' + description + '</strong></div>' ;
-                       html += '<div>Site: <strong>' + city + ', ' + country +'</strong></div>' ;
-                       html += '<div>Image filter: <strong>' + image_filter + '</strong></div>' ;
-                       html += '</div>' ; 
-
-                       google.maps.event.addListener(marker, 'click', function() {
-                          infowindow.open(map,marker);
-                        });  
-                       
-                      $('#events').html(html);
-
-                    };
-                  }
-                else
-                {
-                _open_bootbox('<h4><?= $this->lang->line('item_not_found'); ?></h4><p>' + data.msg +  '</p>');
-                }
-            }
-        });
-
-}
-summary();
-google.maps.event.addDomListener(window, 'load', summary);
-
 
 </script>

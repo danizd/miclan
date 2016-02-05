@@ -217,7 +217,19 @@
     <script src="/assets/plugins/bootbox/bootbox.min.js"></script>
     <script src="/assets/plugins/oembed/jquery.oembed.js"></script>
     <script src="/assets/js/portada.js"></script>
+    
+    
+    <link rel="stylesheet" href="/assets/plugins/jqwidgets/styles/jqx.base.css" type="text/css" />
+    
+    <script src="/assets/plugins/jqwidgets/jqxcore.js"></script>
+    <script src="/assets/plugins/jqwidgets/jqxgauge.js"></script>
+    <script src="/assets/plugins/jqwidgets/jqxdraw.js"></script>
+    <script src="/assets/plugins/jqwidgets/jqxbuttons.js"></script>
+    <script src="/assets/plugins/jqwidgets/jqxslider.js"></script>
+    
 
+
+		<script src="https://content.mgic.com/common/javascript_common/apis/jqwidgets/2.3.1/jqwidgets-ver2.3.1/jqwidgets/jqxgauge.js"></script>
 
     <!-- AdminLTE for demo purposes -->
    <!--   <script src="/assets/dist/js/demo.js"></script>-->

@@ -26,7 +26,7 @@ switch($this->router->class)
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mi Clan &middot; <?= $section_name; ?></title>
+    <title>Proyect &middot; <?= $section_name; ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -373,8 +373,13 @@ switch($this->router->class)
           <ul class="sidebar-menu">
             <li class="header">NAVEGACIÓN</li>
             <li class="active treeview">
-              <a href="resumen">
+              <a href="portada">
                 <i class="fa fa-dashboard"></i> <span>Portada</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+            <li class="active treeview">
+              <a href="pulsometro">
+                <i class="fa fa-bar-chart"></i> <span>Pulsómetro</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
             <li class="treeview">
