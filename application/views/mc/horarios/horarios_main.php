@@ -53,7 +53,7 @@
 		                <div class="input-group">
 	                  <form class="form-horizontal" role="form" id="anadir-form">
 	                    <input id="etiqueta" type="text" class="form-control input-media" placeholder="Semana">
-	                    <input id="valor" type="text" class="form-control input-media" placeholder="Horas">
+	                    <input id="valor" type="number" min="0" max="50" class="form-control input-media" placeholder="Horas">
 	                    <div class="input-group-btn">
 	                      <button id="anadir-semana" type="button" class="btn btn-primary btn-flat">Añadir</button>
 	                    </div><!-- /btn-group -->

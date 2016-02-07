@@ -374,12 +374,12 @@ switch($this->router->class)
             <li class="header">NAVEGACIÓN</li>
             <li class="active treeview">
               <a href="portada">
-                <i class="fa fa-dashboard"></i> <span>Portada</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-dashboard"></i> <span>Portada</span> 
               </a>
             </li>
             <li class="active treeview">
               <a href="pulsometro">
-                <i class="fa fa-bar-chart"></i> <span>Pulsómetro</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-bar-chart"></i> <span>Pulsómetro</span> 
               </a>
             </li>
             <li class="treeview">

@@ -24,8 +24,8 @@ $config['salt']	= '$5$rounds=5000$p1o1h3b4g6s4fgfd5j7fb7n6$';
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://miclan.dev';
-$config['base_url'] = 'http://miclan.dev:8080/';
+$config['base_url'] = 'http://miclan.dev';
+//$config['base_url'] = 'http://miclan.dev:8080/';
 
 /*
 |--------------------------------------------------------------------------

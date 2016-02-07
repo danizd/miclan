@@ -202,12 +202,33 @@
 #gauge, #gauge2{
     margin: 0 auto;
 }
-#jqxbutton, #envia{
-	margin:10px 20px;	
+#jqxbutton, #envia, #puntuacion{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.5em;
+    text-align: center;
 }
 .pulsar{
-    height: 450px;
+    height: 530px;
 }
 #slider2{
 	display:none;
+}
+#input-valoracion{
+    display:none;
+    margin:10px 20px;  
+    width: 30%;
+    margin: 0 auto;
+}
+#input-valoracion input {
+    float: left;
+    width: 80px;
+}
+#cambia {
+    text-align: center;
+    display:none;
+}
+#error {
+    text-align: center;
+    color: red;
 }

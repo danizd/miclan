@@ -103,7 +103,7 @@ function noticias() {
 	              //  html += '<h2><a href="' + enlace +'">' + titulo +'</a></h2>';
 	            //    html += '<img class="img-responsive pad" src="/assets/images/noticias/' + foto +'" alt="Photo">';
 	                html += '<div class="contenido-not">' + descripcion +'</div>';
-	                html += '<p> <a href="' + enlace +'">Enlace</a></p>';
+	                html += '<p> <a target="_blank" href="' + enlace +'">Enlace</a></p>';
 	               	html += '<button class=" desactiva btn btn-block btn-default btn-xs" onclick="desactiva_noticia('+ idNoticia +')">Desactiva la noticia</button>';
 	                html += '</div></div></div>';
 

@@ -104,7 +104,7 @@ function quever() {
                   html += '<div class="box-tools"><button class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Mark as read"><i class="fa fa-circle-o"></i></button> <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> </div><!-- /.box-tools --> </div><!-- /.box-header -->';
                   html += '<div class="box-body" style="display: block;">';
                   html += '<div class="contenido-quever">' + descripcion +'</div>';
-                  html += '<p> <a href="' + enlace +'">Enlace</a></p>';
+                  html += '<p> <a target="_blank" href="' + enlace +'">Enlace</a></p>';
                    // html += '<button class=" desactiva btn btn-block btn-default btn-xs" onclick="desactiva_noticia('+ idQuever +')">Desactiva la pelicula o serie</button>';
 
                   if (descargada == 0) {

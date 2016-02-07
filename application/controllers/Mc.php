@@ -44,7 +44,7 @@ class Mc extends CI_Controller {
 		$this->load->view('mc/portada/portada_main');
 	}
 
-	public function resumen()
+	public function pulsometro()
 	{
 		$this->load->model('users_m');
 		if($this->users_m->login() == false) redirect('/', 'refresh');
@@ -62,7 +62,7 @@ class Mc extends CI_Controller {
 		echo json_encode(array_merge(array("status" => "OK", "nombre" =>  $_SESSION["name"], "foto" => $_SESSION["photo"])));
 	}
 	
-	
+
 	
 	public function noticias()
 	{
@@ -225,6 +225,23 @@ class Mc extends CI_Controller {
 		
 			$this->load->model('noticias_m');
 			$result = $this->noticias_m->anadir_noticias($datos_array);
+			/*Envio email*/
+			if ($_SESSION['user_id'] == 1) {
+				$id_a_enviar = 2;
+			}elseif($_SESSION['user_id'] == 2){
+				$id_a_enviar = 1;
+			}
+			$this->load->helper(array('mis_helper'));
+			$usuario = trae_usuario_por_id($id_a_enviar);
+
+			$this->load->library('envio_emails');
+			$mensaje = '<h1>'. $_SESSION['name'].' ha añadido una nueva noticia.'.'</h1>';
+			$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver la nueva noticia.</h2>';
+
+			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+			/*Envio email*/
+
+
 			echo json_encode(array('status' => 'OK'));
 			exit();
 		//}
@@ -531,6 +548,21 @@ class Mc extends CI_Controller {
 		}
 		else
 		{
+			/*Envio email*/
+			if ($_SESSION['user_id'] == 1) {
+				$id_a_enviar = 2;
+			}elseif($_SESSION['user_id'] == 2){
+				$id_a_enviar = 1;
+			}
+			$this->load->helper(array('mis_helper'));
+			$usuario = trae_usuario_por_id($id_a_enviar);
+
+			$this->load->library('envio_emails');
+			$mensaje = '<h1>'. $_SESSION['name'].' ha solucionado uno de los temas pendientes.'.'</h1>';
+			$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver que se ha solucionado.</h2>';
+
+			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+			/*Envio email*/
 			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
 
 		}
@@ -571,6 +603,22 @@ class Mc extends CI_Controller {
 			);
 			$this->load->model('pendientes_m');
 			$result = $this->pendientes_m->anadir_pendientes($datos_array);
+			/*Envio email*/
+			if ($_SESSION['user_id'] == 1) {
+				$id_a_enviar = 2;
+			}elseif($_SESSION['user_id'] == 2){
+				$id_a_enviar = 1;
+			}
+			$this->load->helper(array('mis_helper'));
+			$usuario = trae_usuario_por_id($id_a_enviar);
+
+			$this->load->library('envio_emails');
+			$mensaje = '<h1>'. $_SESSION['name'].' ha añadido un tema pendiente.'.'</h1>';
+			$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver el nuevo tema.</h2>';
+
+			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+			/*Envio email*/
+
 			echo json_encode(array('status' => 'OK'));
 			exit();
 		}
@@ -655,6 +703,23 @@ class Mc extends CI_Controller {
 		);
 		$this->load->model('citas_m');
 		$result = $this->citas_m->anadir_cita($datos_array);
+
+			/*Envio email*/
+			if ($_SESSION['user_id'] == 1) {
+				$id_a_enviar = 2;
+			}elseif($_SESSION['user_id'] == 2){
+				$id_a_enviar = 1;
+			}
+			$this->load->helper(array('mis_helper'));
+			$usuario = trae_usuario_por_id($id_a_enviar);
+
+			$this->load->library('envio_emails');
+			$mensaje = '<h1>'. $_SESSION['name'].' ha añadido una nueva cita.'.'</h1>';
+			$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver la nueva cita.</h2>';
+
+			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+			/*Envio email*/
+
 		echo json_encode(array('status' => 'OK'));
 		exit();
 	}
@@ -742,6 +807,23 @@ class Mc extends CI_Controller {
 		
 			$this->load->model('quever_m');
 			$result = $this->quever_m->anadir_quever($datos_array);
+
+			/*Envio email*/
+			if ($_SESSION['user_id'] == 1) {
+				$id_a_enviar = 2;
+			}elseif($_SESSION['user_id'] == 2){
+				$id_a_enviar = 1;
+			}
+			$this->load->helper(array('mis_helper'));
+			$usuario = trae_usuario_por_id($id_a_enviar);
+
+			$this->load->library('envio_emails');
+			$mensaje = '<h1>'. $_SESSION['name'].' ha añadido una nueva película o serie para ver.'.'</h1>';
+			$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver cual es.</h2>';
+
+			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+			/*Envio email*/
+
 			echo json_encode(array('status' => 'OK'));
 			exit();
 		
@@ -787,34 +869,7 @@ class Mc extends CI_Controller {
 	
 	}
 
-	public function sendMailGmail()
-	{
-		//cargamos la libreria email de ci
-		$this->load->library("email");
- 
-		//configuracion para gmail
-		$configGmail = array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'ssl://smtp.gmail.com',
-			'smtp_port' => 465,
-			'smtp_user' => 'daniel.zas.dacosta',
-			'smtp_pass' => 'password',
-			'mailtype' => 'html',
-			'charset' => 'utf-8',
-			'newline' => "\r\n"
-		);    
- 
-		//cargamos la configuración para enviar con gmail
-		$this->email->initialize($configGmail);
- 
-		$this->email->from('nombre o correo que envia');
-		$this->email->to("para quien es");
-		$this->email->subject('Bienvenido/a a uno-de-piera.com');
-		$this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al blog');
-		$this->email->send();
-		//con esto podemos ver el resultado
-		var_dump($this->email->print_debugger());
-	}
+
 
 	public function trae_pulsar()
 	{
@@ -836,7 +891,29 @@ class Mc extends CI_Controller {
 	
 		}
 	}
+	public function trae_historico_pulsar()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('pulsar_m');
+		$result1 = $this->pulsar_m->trae_historico_pulsar('Dani', 1);
+		$result2 = $this->pulsar_m->trae_historico_pulsar('Elena', 2);
+		$usuario = array('usuario' => $_SESSION['user_id']);
+		$result = $result1 + $result2 ;
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay noticias"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "usuario" => $usuario, "aaDani" =>  $result1, "aaElena" =>  $result2)));
 	
+		}
+	}
+
+
+
 	public function anadir_pulsar()
 	{
 		$this->load->model('users_m');
@@ -847,11 +924,26 @@ class Mc extends CI_Controller {
 		);
 		$this->load->model('pulsar_m');
 		$result = $this->pulsar_m->anadir_pulsar($datos_array);
+		if ($_SESSION['user_id'] == 1) {
+			$id_a_enviar = 2;
+		}elseif($_SESSION['user_id'] == 2){
+			$id_a_enviar = 1;
+		}
+		$this->load->helper(array('mis_helper'));
+		$usuario = trae_usuario_por_id($id_a_enviar);
+
+		$this->load->library('envio_emails');
+		$mensaje = '<h1>'. $_SESSION['name'].' ha cambiado tu valoración en el pulsómetro.'.'</h1>';
+		$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver tu nueva valoración.</h2>';
+
+		$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+
 		echo json_encode(array('status' => 'OK'));
 		exit();
 	
 	}
-	
+
+
 
 }
 

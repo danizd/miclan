@@ -130,5 +130,21 @@ class Users_m extends CI_Model{
 	}
 
 
+     function trae_usuario_por_id($id)
+    {
+        $this->db->select("admin_users.idUsuario, admin_users.name, admin_users.email ");
+        $this->db->from("admin_users");
+        $this->db->where('admin_users.idUsuario', $id);
+        $query = $this->db->get();
+        $result = $query->result_array();
 
+        if(is_array($result) && count($result) > 0)
+        {
+            return $result;
+        }
+        else
+        {
+            return array();
+        }
+    }
 }
