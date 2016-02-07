@@ -42,7 +42,7 @@
     </div>
     <div class="row">
           <div class="col-md-6">
-   					<div class="box box-primary pulsar">
+   					<div class="box box-grey pulsar">
                 <div class="box-header with-border">
                   <div id="titulo-cambia"></div>
                 </div>
