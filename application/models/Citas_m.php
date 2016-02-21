@@ -12,6 +12,7 @@ class Citas_m extends CI_Model {
             citas.borderColor, 
          ");
         $this->db->from("citas");
+        $this->db->order_by('citas.start','asc');
         $query = $this->db->get();
         $result = $query->result_array();
 

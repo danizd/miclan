@@ -226,11 +226,11 @@
     <script src="/assets/plugins/jqwidgets/jqxdraw.js"></script>
     <script src="/assets/plugins/jqwidgets/jqxbuttons.js"></script>
     <script src="/assets/plugins/jqwidgets/jqxslider.js"></script>
-    
+    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 
 
 		<script src="https://content.mgic.com/common/javascript_common/apis/jqwidgets/2.3.1/jqwidgets-ver2.3.1/jqwidgets/jqxgauge.js"></script>
-
     <!-- AdminLTE for demo purposes -->
    <!--   <script src="/assets/dist/js/demo.js"></script>-->
     <?php if (isset($script)) $this->load->view($script); ?>

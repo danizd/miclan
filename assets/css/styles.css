@@ -14,7 +14,9 @@
 #error-sintomas,
 #error-fechaInicio,
 #error-fechaFin,
-#error-tratamiento
+#error-tratamiento,
+#error-categoria,
+#error-archivo
 {color:red;}
 #correcto{text-align: center;font-size: x-large;color: #00a65a;}
 .box-header .right{
@@ -32,7 +34,7 @@
     text-align: center;
 }
 .horarios .fc-title {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 #pendientes .box-body p {

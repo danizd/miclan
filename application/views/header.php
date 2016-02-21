@@ -16,6 +16,24 @@ switch($this->router->class)
             case "citas":
                 $section_name = 'Citas';
             break;
+            case "informes":
+                $section_name = 'Informes';
+            break;
+            case "pendientes":
+                $section_name = 'Temas pendientes';
+            break;
+            case "horarios":
+                $section_name = 'Horarios';
+            break;
+            case "que_ver":
+                $section_name = 'Que ver';
+            break;
+            case "almacen":
+                $section_name = 'Almacén de archivos';
+            break;
+            case "saloa":
+                $section_name = 'Saloa';
+            break;
         }
     break;
 }
@@ -26,7 +44,7 @@ switch($this->router->class)
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Proyect &middot; <?= $section_name; ?></title>
+    <title>Mi Clan &middot; <?= $section_name; ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -63,7 +81,8 @@ switch($this->router->class)
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+
 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -424,6 +443,13 @@ switch($this->router->class)
               <a href="quever">
                 <i class="fa fa-tv"></i> 
                 <span>Que ver</span> 
+                <span id="num_quever" class="label label-primary pull-right"></span>
+              </a>
+            </li>
+            <li>
+              <a href="almacen">
+                <i class="fa fa-folder-open-o"></i> 
+                <span>Almacén de archivos</span> 
                 <span id="num_quever" class="label label-primary pull-right"></span>
               </a>
             </li>

@@ -173,49 +173,7 @@ class Mc extends CI_Controller {
 	{
 		$this->load->model('users_m');
 		if($this->users_m->login() == false) exit();
-/*
-	  $this->load->library('form_validation');
-	  $this->form_validation->set_rules('titulo', 'Título', 'required|min_length[3]');
-	  $this->form_validation->set_rules('enlace', 'Enlace', 'required');
-		$error = Array();
 
-		if ($this->form_validation->run() == false) 
-		{
-			$error['titulo'] =  form_error('titulo');
-			$error['enlace'] =  form_error('enlace');
-			$error['descripcion'] =  form_error('descripcion');
-			
-			echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
-			exit();
-		
-		}	
-		else
-		{
-			$config['upload_path'] =  './assets/images/noticias/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '10000';
-			
-			$current_date = new DateTime();
-			$filename = $config['file_name'] = $current_date->format('Y_m_d_H_i_s_u') . "_" . rand(1000, 9999) . ".jpg";
-			$this->load->library('upload', $config);
-			
-			if(!$this->upload->do_upload('foto')){
-				$error['foto'] = $this->upload->display_errors();
-				echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
-				exit();
-			}
-			
-			$datos_array = array(
-					'titulo' => $this->input->post('titulo'),
-					'enlace' => $this->input->post('enlace'),
-					'descripcion' => $this->input->post('descripcion'),
-					'foto' => $this->input->post('foto'),
-					'userID' => $_SESSION['user_id'],
-					'activada' => 1,
-					'foto' => $filename
-			);
-			
-			*/
 			$datos_array = array(
 					'enlace' => $this->input->post('enlace'),
 					'descripcion' => $this->input->post('descripcion'),
@@ -237,6 +195,7 @@ class Mc extends CI_Controller {
 			$this->load->library('envio_emails');
 			$mensaje = '<h1>'. $_SESSION['name'].' ha añadido una nueva noticia.'.'</h1>';
 			$mensaje .= '<h2> Entra en <a href="'. base_url() .'">miclan</a> para ver la nueva noticia.</h2>';
+			$mensaje .= '<h2> Cuando la leas marcala como leída.</h2>';
 
 			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
 			/*Envio email*/
@@ -262,6 +221,20 @@ class Mc extends CI_Controller {
 		}
 		else
 		{
+			/*Envio email*/
+			if ($_SESSION['user_id'] == 1) {
+				$id_a_enviar = 2;
+			}elseif($_SESSION['user_id'] == 2){
+				$id_a_enviar = 1;
+			}
+			$this->load->helper(array('mis_helper'));
+			$usuario = trae_usuario_por_id($id_a_enviar);
+
+			$this->load->library('envio_emails');
+			$mensaje = '<h1>'. $_SESSION['name'].' ha desactivado la noticia.'.'</h1>';
+
+			$this->envio_emails->enviaEmail($usuario[0]->email, $mensaje);
+			/*Envio email*/
 			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
 	
 		}
@@ -943,7 +916,80 @@ class Mc extends CI_Controller {
 	
 	}
 
+	public function almacen()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) redirect('/', 'refresh');
+		$this->load->view('header');
+		$this->load->view('mc/almacen/almacen_main');
+		$this->load->view('footer', array("script" => "mc/almacen/javascript"));
+	}
 
+
+
+	public function trae_archivos()
+	{
+		$this->load->model('users_m');
+		if($this->users_m->login() == false) exit();
+		$this->load->model('almacen_m');
+		$result = $this->almacen_m->trae_archivos();
+		header('Content-Type: application/json');
+		if(count($result) == 0)
+		{
+			echo json_encode(array("status" => "ERROR", "msg" => "No hay archivos"));
+		}
+		else
+		{
+			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
+
+		}
+	}
+
+	public function anadir_archivos()
+	{
+		
+	  $this->load->library('form_validation');
+	  $this->form_validation->set_rules('titulo', 'Título', 'required|min_length[3]');
+	  $this->form_validation->set_rules('categoria', 'Categoría', 'required');
+		$error = Array();
+
+		if ($this->form_validation->run() == false) 
+		{
+			$error['titulo'] =  form_error('titulo');
+			$error['categoria'] =  form_error('categoria');
+			
+			echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
+			exit();
+		
+		}	
+		else
+		{
+			$config['upload_path'] =  './assets/archivos/';
+			$config['allowed_types'] = 'gif|jpg|png|doc|xls|docx|pdf|xlsx';
+			
+			$current_date = new DateTime();
+			$this->load->library('upload', $config);
+			
+			if(!$this->upload->do_upload('archivo')){
+				$error['archivo'] = $this->upload->display_errors();
+				echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
+				exit();
+			}
+			$filename =  $current_date->format('Y_m_d') . "_" . rand(1000, 9999) . "_" .  $this->upload->data('file_name');
+
+			$datos_array = array(
+					'titulo' => $this->input->post('titulo'),
+					'descripcion' => $this->input->post('descripcion'),
+					'categoria' => $this->input->post('categoria'),
+					'archivo' => $filename,
+					'userID' => $_SESSION['user_id'],
+			);
+			$this->load->model('almacen_m');
+			$result = $this->almacen_m->anadir_archivo($datos_array);
+			echo json_encode(array('status' => 'OK'));
+			exit();
+		}
+	}
 
 }
 

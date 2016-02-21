@@ -104,7 +104,7 @@ function noticias() {
 	            //    html += '<img class="img-responsive pad" src="/assets/images/noticias/' + foto +'" alt="Photo">';
 	                html += '<div class="contenido-not">' + descripcion +'</div>';
 	                html += '<p> <a target="_blank" href="' + enlace +'">Enlace</a></p>';
-	               	html += '<button class=" desactiva btn btn-block btn-default btn-xs" onclick="desactiva_noticia('+ idNoticia +')">Desactiva la noticia</button>';
+	               	html += '<button class=" desactiva btn btn-block btn-default btn-xs" onclick="desactiva_noticia('+ idNoticia +')">Márcala como leída</button>';
 	                html += '</div></div></div>';
 
 	                $('#noticias').html(html);
