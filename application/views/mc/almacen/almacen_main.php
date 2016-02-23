@@ -24,10 +24,40 @@
       </div>
     </div>
     <div class="row">
-      <table id="archivos" class="display" width="100%"></table>
-    </div>
-  </div>
-
+    <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Tabla de archivos</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                  	<div class="row">
+                  		<div class="col-sm-6"></div>
+                  		<div class="col-sm-6"></div>
+                  	</div>
+                  <div class="row">
+                  	<div class="col-sm-12">
+                  		<table id="archivos" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example2_info">
+       							  	<thead>
+					                <tr>
+					                    <th>Archivo</th>
+					                    <th>Título</th>
+					                    <th>Descripción</th>
+					                    <th>Categoría</th>
+					                    <th>Fecha de subida</th>
+					                </tr>
+					           	 </thead>
+       							
+       							
+       							
+       								</table>
+                		</div><!-- /.box-body -->
+              		</div><!-- /.box -->
+            		</div>    
+    				</div>
+ 				 </div>
+    	</div>
+ 	 </div>
                 <!---  ///////////////////////////////////  Ventana modal //////////////////////////// -->
 <div class="modal fade" id="abreModal">
   <div class="modal-dialog">
@@ -90,7 +120,7 @@
         <div id="correcto"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-default" id="cancela-archivo" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" id="guarda-archivo">Guardar</button>
       </div>
 

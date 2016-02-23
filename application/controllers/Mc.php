@@ -940,8 +940,13 @@ class Mc extends CI_Controller {
 		}
 		else
 		{
-			echo json_encode(array_merge(array("status" => "OK", "aaData" =>  $result)));
-
+			foreach($result['aaData'] as $current_result_key => $current_result)
+			{
+				$result['aaData'][$current_result_key][0] = '<a href="'. base_url("assets/archivos/".$result['aaData'][$current_result_key][0]).'" target="_blank">Ver archivo </a>';
+			}
+			
+			
+			echo json_encode($result);
 		}
 	}
 
@@ -968,6 +973,8 @@ class Mc extends CI_Controller {
 			$config['allowed_types'] = 'gif|jpg|png|doc|xls|docx|pdf|xlsx';
 			
 			$current_date = new DateTime();
+			$config['file_name'] =  $current_date->format('Y_m_d') . "_" . rand(1000, 9999) . "_" .  $_FILES['archivo']['name'];
+				
 			$this->load->library('upload', $config);
 			
 			if(!$this->upload->do_upload('archivo')){
@@ -975,8 +982,8 @@ class Mc extends CI_Controller {
 				echo json_encode(array('status' => 'ERROR', 'msg' => $error ));
 				exit();
 			}
-			$filename =  $current_date->format('Y_m_d') . "_" . rand(1000, 9999) . "_" .  $this->upload->data('file_name');
-
+			$filename =  $this->upload->data('file_name');
+				
 			$datos_array = array(
 					'titulo' => $this->input->post('titulo'),
 					'descripcion' => $this->input->post('descripcion'),
