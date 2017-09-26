@@ -19,6 +19,17 @@ En concreto en la aplicación se puede guardar y administar información relativ
 
 
 ************
+Capturas
+************
+
+<img src="https://lh4.googleusercontent.com/eHuqFM1kf010LnscLCvuEWjworpb1TO7-1CLwcIXsmDb-0yxqWwOHFDzBKHal056Ughq3anz1ipCutjacHQ2Mc3dQQ67D37FN2VnvobKK53q5e2SAhw4CKsWIMT-UgyuDdc2e4o" style=" width:100px ; height:100px " />
+
+
+
+
+
+
+************
 Versión
 ************
 **Versión 2.0 beta**
