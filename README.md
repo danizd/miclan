@@ -22,19 +22,19 @@ Capturas
 ==========
 
 
-<a target="_blank" href="https://i.imgur.com/BOYjF"> Pulsómetro</a>
+<a target="_blank" href="https://i.imgur.com/eODN3dC.jpg"> Pulsómetro</a>
 
-<a target="_blank" href="https://i.imgur.com/bBxeP"> Tareas pendientes</a>
+<a target="_blank" href="https://i.imgur.com/k0Itj9l.jpg"> Tareas pendientes</a>
 
-<a target="_blank" href="https://i.imgur.com/KhD6L"> Citas pendientes</a>
+<a target="_blank" href="https://i.imgur.com/UWHnUBN.jpg"> Citas pendientes</a>
 
-<a target="_blank" href="https://i.imgur.com/5TtYZ"> Horarios</a>
+<a target="_blank" href="https://i.imgur.com/JSHoSwJ.jpg"> Horarios</a>
 
-<a target="_blank" href="https://i.imgur.com/ukMXo"> Qué ver</a>
+<a target="_blank" href="https://i.imgur.com/FZKCpyr.jpg"> Qué ver</a>
 
-<a target="_blank" href="https://i.imgur.com/a/3X2rr"> Almacén de archivos</a>
+<a target="_blank" href="https://i.imgur.com/wIJo1Fm.jpg"> Almacén de archivos</a>
 
-<a target="_blank" href="https://i.imgur.com/a/93Y62"> Galería de fotos</a>
+<a target="_blank" href="https://i.imgur.com/IHZTonT.jpg"> Galería de fotos</a>
 
 
 
