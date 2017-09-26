@@ -1,8 +1,9 @@
 ###################
 Que es MiClan - Proyecto de Daniel Zas
 ###################
-
+^^^^^^^^^^
 MiClan es una aplicación web que gestiona información relevante y privada de cualquier familia. en concretoen la aplicación se puede guardar y admnistar información relativa a:
+^^^^^^^^^^
 * Pulsómetro: permite, a un miembro de la pareja familiar puntuar de 1 a 100 al otro miembro. Guarda un hist´rico de las puntuaciones.
 * Noticias: permite añadir noticias que pueden ser interesantes para los miembros de la familia.
 * Temas pendientes: de cada uno de los miembros de la unidad familiar. Reciiran avisos en telegram cuando se les asigne una tarea y recordatorios, cada cierto tiempo para realizarla segun el grado de urgencia de la misma.
