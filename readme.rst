@@ -1,22 +1,29 @@
 ###################
-What is CodeIgniter
+Que es MiClan - Proyecto de Daniel Zas
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+MiClan es una aplicación web que gestiona información relevante y privada de cualquier familia. en concretoen la aplicación se puede guardar y admnistar información relativa a:
+- Pulsómetro: permite, a un miembro de la pareja familiar puntuar de 1 a 100 al otro miembro. Guarda un hist´rico de las puntuaciones.
+- Noticias: permite añadir noticias que pueden ser interesantes para los miembros de la familia.
+- Temas pendientes: de cada uno de los miembros de la unidad familiar. Reciiran avisos en telegram cuando se les asigne una tarea y recordatorios, cada cierto tiempo para realizarla segun el grado de urgencia de la misma.
+- Citas: permite añadir en un calendario de citas médicas o de cualquier otro tipo.
+- Horarios laborales o escolares, de uno de los miembros de la unidad familiar
+- Informes médicos: permite añadir informes de las citas médicas de cada miembro de la unidad familiar y las clasifica por tipo (urgencias , médico de cabecera, otras consultas)
+- Que ver: permite añadir películas o series, mediante su enlace de Filmaffinity. Luego podran marcarse como pendientes, descargadas y/o vstas.
+- Almacén de archivos: Permite subir archivos propios de los miembros de la familia como curriculums, capturas de tarjeta de la Segurdad social, etc.
+- Galerías de fotos: muestra albumes de fotos familiares subidas a Flickr
+
+
+************
+Versión
+************
+Version 2.0 beta
 
 *******************
 Release Information
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<http://www.codeigniter.com/download>`_ page.
+Utiliza Codeigniter 3.0.3 
 
 **************************
 Changelog and New Features
@@ -26,21 +33,16 @@ You can find a list of all changes for each release in the `user
 guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
 
 *******************
-Server Requirements
+Requirimientos del servidor
 *******************
 
-PHP version 5.4 or newer is recommended.
-
-It should work on 5.2.4 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+La Versión de PHP recomendada es 5.4 o superior
 
 ************
-Installation
+Instalación
 ************
+Es necesaria la conexión con una determinada bbdd. 
 
-Please see the `installation section <http://www.codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
 
 *******
 License
@@ -49,22 +51,3 @@ License
 Please see the `license
 agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
 
-*********
-Resources
-*********
-
--  `User Guide <http://www.codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community IRC <http://www.codeigniter.com/irc>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
