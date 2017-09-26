@@ -1,7 +1,8 @@
 Que es MiClan - Proyecto de Daniel Zas
 ==========
 MiClan es una aplicación web que gestiona información relevante y privada de una unidad familia.
-^^^^^^^^^^
+--------------------
+
 
 En concreto en la aplicación se puede guardar y administar información relativa a:
 
@@ -16,11 +17,19 @@ En concreto en la aplicación se puede guardar y administar información relativ
 * **Galerías de fotos**: muestra albumes privados de fotos familiares subidas a Flickr
 
 
-************
+
 Capturas
-************
+==========
 
+<a target="_blank" href="https://imgur.com/a/BOYjF"> Pulsómetro</a>
 
+<a target="_blank" href="https://imgur.com/a/BOYjF"> Pulsómetro</a>
+<a target="_blank" href="https://imgur.com/a/bBxeP"> Tareas pendientes</a>
+<a target="_blank" href="https://imgur.com/a/KhD6L"> Citas pendientes</a>
+<a target="_blank" href="https://imgur.com/a/5TtYZ"> Horarios</a>
+<a target="_blank" href="https://imgur.com/a/ukMXo"> Qué ver</a>
+<a target="_blank" href="https://imgur.com/a/3X2rr"> Almacén de archivos</a>
+<a target="_blank" href="https://imgur.com/a/93Y62"> Galería de fotos</a>
 
 
 
