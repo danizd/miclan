@@ -41,30 +41,17 @@ Capturas
 
 
 
-Versión
+Información de la versión
 ==========
 
 
 **Versión 2.0 beta**
 
 
-Release Information
-==========
-
-
-Utiliza Codeigniter 3.0.3 
-
-Changelog and New Features
-==========
-
-
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
-
-
 Requirimientos del servidor
 ==========
 
+Utiliza Codeigniter 3.0.3 
 
 La Versión de PHP recomendada es 5.4 o superior
 
@@ -76,7 +63,7 @@ Es necesaria la conexión con una determinada bbdd.
 
 
 
-License
+Licencia
 ==========
 
 
