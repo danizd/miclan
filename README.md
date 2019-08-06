@@ -34,7 +34,7 @@ Capturas
 
 <a target="_blank" href="https://i.imgur.com/wIJo1Fm.jpg"> Almacén de archivos</a>
 
-<a target="_blank" href="https://i.imgur.com/IHZTonT.jpg"> Galería de fotos</a>
+<a target="_blank" href="#"> Galería de fotos</a>
 
 
 
